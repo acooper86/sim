@@ -1,0 +1,15 @@
+<h1><%= @user.name %></h1>
+<table>
+	<tr>
+		<td><h2>Name:</h2></td>
+		<td><%= @user.name %></td>
+	</tr>
+	<tr>
+		<td><h2>Email:</h2></td>
+		<td><%= @user.email %></td>
+	</tr>
+	<tr>
+		<td><h2>URL:</h2></td>
+		<td><%= link_to user_path(@user), @user %></td>
+	</tr>
+</table>
