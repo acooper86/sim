@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Sim</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-
-<%= yield %>
-
-</body>
+	<head>
+		<title><%= title %></title>
+		<%= render 'layouts/css' %>
+	</head>
+	<body>
+		<article id = "container">
+			<header>
+				<%= render 'layouts/header' %>
+			</header>
+			<section>
+				<%= yield %>
+			</section>
+			<footer>
+				<%= render 'layouts/footer' %>
+			</footer>
+		</article>
+	</body>
 </html>
