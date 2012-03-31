@@ -1,4 +1,5 @@
 Sim::Application.routes.draw do
+  resources :sessions, :only => [:new, :create, :destroy]
   resources :users
 
   root :to => "pages#home"
@@ -14,5 +15,9 @@ Sim::Application.routes.draw do
   match '/support', :to => "pages#support"
   
   match '/signup', :to => "users#new"
+  
+  match '/signin', :to => "sessions#new"
+  
+  match '/signout', :to => "sessions#destroy"
 
  end
