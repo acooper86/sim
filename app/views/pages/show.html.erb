@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title><%= title %></title>
+		<%= stylesheet_link_tag 'reset.css'%>
+		<%= stylesheet_link_tag @website.theme, :media => 'screen' %>
+	</head>
+	<body>
+		<article id = <%= @page.id %>>
+			<%= render 'layouts/page_header' %>
+			<div id="box">
+				<%= if (@page.content) 
+					@page.content.html_safe 
+					else 
+					"<h1>No Content</h1>".html_safe
+					end %>
+			</div>
+		</article>
+	</body>
+</html>

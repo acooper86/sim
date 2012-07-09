@@ -11,18 +11,53 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120331024442) do
+ActiveRecord::Schema.define(:version => 20120706202346) do
+
+  create_table "pages", :force => true do |t|
+    t.integer  "website_id"
+    t.boolean  "indexed",    :default => true
+    t.text     "content"
+    t.string   "ptype",      :default => "Normal"
+    t.boolean  "child",      :default => false
+    t.string   "ptitle"
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+  end
 
   create_table "users", :force => true do |t|
-    t.string   "name"
+    t.string   "first_name"
     t.string   "email"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
     t.string   "encrypted_password"
     t.string   "salt"
     t.boolean  "admin"
+    t.string   "last_name",              :limit => 60
+    t.string   "address_l1",             :limit => 60
+    t.string   "address_l2",             :limit => 60
+    t.string   "city",                   :limit => 60
+    t.string   "state",                  :limit => 60
+    t.string   "zip",                    :limit => 12
+    t.string   "telephone",              :limit => 12
+    t.string   "business",               :limit => 60
+    t.string   "password_reset_token"
+    t.datetime "password_reset_sent_at"
+    t.string   "activated"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+
+  create_table "websites", :force => true do |t|
+    t.string   "user_id"
+    t.string   "theme"
+    t.string   "domain"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+    t.string   "title",       :limit => 60
+    t.string   "motto",       :limit => 60
+    t.string   "order"
+    t.string   "description"
+    t.string   "keywords"
+  end
 
 end

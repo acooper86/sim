@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title><%= title %></title>
+		<%= stylesheet_link_tag 'reset.css'%>
+		<%= stylesheet_link_tag 'pages.css', :media => 'screen' %>
+		<%= stylesheet_link_tag 'editor.css', :media => 'screen' %>
+		<%= stylesheet_link_tag @website.theme, :media => 'screen' %>
+	</head>
+	<body>
+		<section id = "controlbar">
+			<%= form_for([@user, @website, @page], :url => user_websites_page_path) do |f| %>
+				<%= render 'shared/error_messages', :object => f.object %>
+				<%= f.hidden_field :content %>	
+				<%= f.submit "Save and Return", :id => "up_submit" %>
+			<% end %>
+			<%= render 'layouts/static_controls' %>
+			<%= render 'layouts/text_controls' %>
+			<%= render 'layouts/image_controls' %>
+			<%= render 'layouts/link_controls' %>
+		</section>
+		<article id = <%= @page.id %>>
+			<%= render 'layouts/page_header' %>
+			<div id="box" contenteditable = true>
+				<%= yield %>
+			</div>
+		</article>
+		
+		<%= javascript_include_tag('editor.js') %>
+	</body>
+</html>

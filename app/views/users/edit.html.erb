@@ -1,10 +1,18 @@
-<h1>Edit User Information</h1>
+<% stylesheet 'pages' %>
+<% stylesheet 'users' %>
+<div id="signup">
+<h1>Update Profile Information</h1>
 <%= form_for(@user) do |f| %>
 <%= render 'shared/error_messages', :object => f.object %>
 
 	<div class="field">
-		<%= f.label :name %><br />
-		<%= f.text_field :name %>
+		<%= f.label :first_name %><br />
+		<%= f.text_field :first_name %>
+	</div>
+	
+	<div class="field">
+		<%= f.label :last_name %><br />
+		<%= f.text_field :last_name %>
 	</div>
 	
 	<div class="field">
@@ -13,16 +21,42 @@
 	</div>
 	
 	<div class="field">
-		<%= f.label :password %><br />
-		<%= f.password_field :password %>
+		<%= f.label "Address Line 1" %><br />
+		<%= f.text_field :address_l1 %>
 	</div>
 	
 	<div class="field">
-		<%= f.label :password_confirmation, "Confirmation" %><br />
-		<%= f.password_field :password_confirmation %>
+		<%= f.label "Address Line 2" %><br />
+		<%= f.text_field :address_l2 %>
+	</div>
+	
+	<div class="field">
+		<%= f.label :city %><br />
+		<%= f.text_field :city %>
+	</div>
+	
+	<div class="field">
+		<%= f.label :state %><br />
+		<%= f.select(:state, options_for_select(us_states)) %>
+	</div>
+	
+	<div class="field">
+		<%= f.label :zip %><br />
+		<%= f.text_field :zip %>
+	</div>
+	
+	<div class="field">
+		<%= f.label :telephone %><br />
+		<%= f.telephone_field :telephone %>
+	</div>
+	
+	<div class="field">
+		<%= f.label :business %><br />
+		<%= f.text_field :business %>
 	</div>
 	
 	<div class="actions">
-		<%= f.submit "Sign up" %>
+		<%= f.submit "Update Profile" %>
 	</div>
 <% end %>
+</div>

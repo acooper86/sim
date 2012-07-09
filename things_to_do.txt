@@ -1,0 +1,19 @@
+style the error invaid email/password combination
+style the contact form
+
+create remember me checkbox
+
+refactor the password reset to be under the users controller
+
+get the permanent cookie/remember me checkbox to work
+
+1. style quicklinks to float left => style the user/website controllers
+
+Check email activation functionality
+
+get correct_user, authorize_user filter to work in pages controller
+
+/////current
+add the list to the website edit page. Then I need to create the delete action, 
+and the update action. There won't be an edit page because It will be done on the website edit
+page. 

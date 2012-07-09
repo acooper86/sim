@@ -1,3 +1,4 @@
+<%= image_tag ("logo.png"), :alt => "Simplissage Logo" %>
 <hgroup>
 	<h1>Simplissage</h1>
 	<h2>Web Promotion Tools for Massage Therapists</h2>
@@ -5,13 +6,13 @@
 
 <nav>
 	<ul>
-		<li><%= link_to "Home", root_path %></li>
 		<% if signed_in? %>
+		<li><%= link_to "Home", dashboard_path %></li>
+		<li><%= link_to "Settings", current_user %></li>
 		<li><%= link_to "Support", support_path  %></li>
-		<li><%= link_to "Users", users_path %></li>
-		<li><%= link_to "Profile", current_user %></li>
 		<li><%= link_to "Sign out", signout_path, :method => :delete %></li>
 		<% else %>
+		<li><%= link_to "Home", root_path %></li>
 		<li><%= link_to "Sign in", signin_path %></li>
 		<% end %>
 	</ul>

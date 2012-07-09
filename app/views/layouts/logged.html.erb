@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title><%= title %></title>
+		<%= render 'layouts/css' %>
+		<%= yield(:head) %>
+	</head>
+	<body>
+		<article class = "container round">
+			<header class = "round">
+				<%= render 'layouts/header' %>
+			</header>
+			<section class="main round">
+				<%= render 'shared/quicklinks'%>
+				<% flash.each do |key, value| %>
+					<div class="flash <%= key %>"><%= value %></div>
+				<% end %>
+				<%= yield %>
+			</section>
+			<footer class= "round">
+				<%= render 'layouts/footer' %>
+			</footer>
+		</article>
+	</body>
+</html>

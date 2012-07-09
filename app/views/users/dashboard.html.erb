@@ -1,0 +1,47 @@
+<% stylesheet 'pages' %>
+
+<h1>Welcome <%= current_user.first_name %></h1>
+
+<article id="profile">
+	<h2>Profile Information:</h2>
+	<table>
+		<tr>
+			<td class="label">Name:</td>
+			<td><%= current_user.first_name %> <%= current_user.last_name %></td>
+		</tr>
+		<tr>
+			<td class="label">Business Name:</td>
+			<td><%= current_user.business %></td>
+		</tr>
+		<tr>
+			<td class="label">Telephone #:</td>
+			<td><%= current_user.telephone %></td>
+		</tr>
+		<tr>
+			<td class="label">Address:</td>
+			<td><%= current_user.address_l1 %>
+			<%if current_user.address_l2? %>
+				<br /><%= current_user.address_l2 %>
+			<% end %>
+			<br /><%= current_user.city %>, <%= current_user.state %> <%= current_user.zip %></td>
+		</tr>
+		<% if @website %>
+		<th>Your Website:</th>
+			<tr>
+				<td>Address:</td>
+				<td><%= @website.domain %></td>
+			</tr>
+			<tr>
+				<td>Title:</td>
+				<td><%= @website.title %></td>
+			</tr>
+			<tr>
+				<td>Motto:</td>
+				<td><%= @website.motto %></td>
+			</tr>
+			<tr>
+				<td>Theme:</td>
+				<td><%= @website.theme %></td>
+			</tr>
+		<% end %>
+	</table>

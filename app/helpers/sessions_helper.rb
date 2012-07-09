@@ -1,7 +1,12 @@
 module SessionsHelper
 
-	def sign_in(user)
-		cookies.permanent.signed[:remember_token]=[user.id, user.salt]
+	def sign_in(user, permanent)
+		if permanent === "1"
+			cookies.permanent.signed[:remember_token]=[user.id, user.salt]
+		else
+			cookies.signed[:remember_token]={:value => [user.id, user.salt], :expires => 3.hours.from_now}
+		end
+		
 		self.current_user = user
 	end
 	
@@ -11,6 +16,12 @@ module SessionsHelper
 	
 	def current_user
 		@current_user ||= user_from_remember_token
+	end
+	
+	def forward_check
+		if signed_in?
+			redirect_to dashboard_path
+		end
 	end
 	
 	def signed_in?

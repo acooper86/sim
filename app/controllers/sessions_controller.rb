@@ -11,8 +11,14 @@ class SessionsController < ApplicationController
   		@title = "Sign in"
 	  	render 'new'
 	else
-		sign_in user
-		redirect_back_or user
+		if user.activated == "t"
+			sign_in(user,params[:session][:permanent])
+			redirect_back_or dashboard_path
+		else
+			flash.now[:error] = "The Account you are trying to access has not been activated. Please check any spam filters for lost emails."
+  			@title = "Sign in"
+		  	render 'new'
+		end
 	end
   end
   

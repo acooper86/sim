@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
-  before_filter :authenticate, :only => [:index,:show,:edit, :update]
-  before_filter :correct_user, :only => [:edit, :update]
+  before_filter :authenticate, :only => [:index,:show,:edit, :update, :dashboard, :support]
+  before_filter :correct_user, :only => [:edit,:update]
   before_filter :admin_user, :only => :destroy
+  
+  layout "logged", :except => :new
   
   def new
   	@title = "Sign up"
@@ -11,9 +13,9 @@ class UsersController < ApplicationController
   def create
   	@user = User.new(params[:user])
   	if @user.save
-  		sign_in @user
-  		flash[:success] = "Welcome to Simplissage! Begin by watching the orientation videos."
-  		redirect_to @user
+  		@user.send_activation
+  		flash[:success] = "#{@user.first_name}, welcome to Simplissage! Please verify your email address to login."
+  		redirect_to root_path
   	else
   		@title= "Sign up"
   		render 'new'
@@ -39,6 +41,7 @@ class UsersController < ApplicationController
   	@user = User.find(params[:id])
   	if @user.update_attributes(params[:user])
   		flash[:success] = "Profile updated."
+  		cookies.permanent.signed[:remember_token]=[@user.id, @user.salt]
   		redirect_to @user
   	else
   		@title = "Edit user"
@@ -50,6 +53,27 @@ class UsersController < ApplicationController
   	User.find(params[:id]).destroy
   	flash[:success] = "User destroyed"
   	redirect_to users_path
+  end
+  
+  def dashboard
+  	@title = "Dashboard"
+  	@user = current_user
+  	@website = @user.website
+  end
+  
+  def support
+  	@title = "Support"
+  end
+  
+  def activate
+  	@user = User.find_by_activated(params[:id])
+  	if @user.set_activation
+  		flash[:success] = "Email activated, you are now ready to log in."
+  		redirect_to new_session_path
+  	else
+  		flash[:notice] = "There was an error activating your email, please contact the site administrator."
+  		redirect_to new_session_path
+  	end
   end
   
   private

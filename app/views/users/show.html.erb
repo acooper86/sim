@@ -1,17 +1,42 @@
-<h1><%= @user.name %></h1>
+<% stylesheet 'pages' %>
+
+<h1><%= @user.first_name %> <%= @user.last_name %></h1>
 <%= link_to "Edit Profile Information", edit_user_path(current_user) %>
+<%= link_to "Reset Password", new_password_reset_path %>
+
+<% if @user.address_l1.blank? %>
+	<h2 class="flash notice">
+		It appears as though you haven't finished filling out your profile.
+		You may do so by  
+		<%= link_to "Editing Your Profile Information", edit_user_path(current_user) %>.
+	</h2>
+<%end%>
 
 <table>
 	<tr>
 		<td><h2>Name:</h2></td>
-		<td><%= @user.name %></td>
+		<td><%= @user.first_name %> <%= @user.last_name %></td>
 	</tr>
 	<tr>
 		<td><h2>Email:</h2></td>
 		<td><%= @user.email %></td>
-	</tr>
+	</tr>	
 	<tr>
-		<td><h2>URL:</h2></td>
-		<td><%= link_to user_path(@user), @user %></td>
+		<td><h2>Address:</h2></td>
+		<td>
+			<%= @user.address_l1 %><br />
+			<%= @user.address_l2 %><br />
+			<%= @user.city %>, <%=@user.state %> <%= @user.zip%>
+		</td>
+	</tr>
+	
+	<tr>
+		<td><h2>Telephone:</h2></td>
+		<td><%= @user.telephone %></td>
+	</tr>
+	
+	<tr>
+		<td><h2>Business Name:</h2></td>
+		<td><%= @user.business %></td>
 	</tr>
 </table>
