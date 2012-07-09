@@ -8,6 +8,10 @@ gem 'will_paginate'
 
 gem 'jquery-rails'
 
+gem 'therubyracer'
+
+gem 'uglifier'
+
 group :development do
 	gem 'rspec-rails'
 end
