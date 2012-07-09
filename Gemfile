@@ -16,3 +16,7 @@ group :test do
 	gem 'rspec-rails'
 	gem 'webrat'
 end
+
+group :production do
+	gem 'mysql2'
+end
