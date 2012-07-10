@@ -1,0 +1,1 @@
+function showPageForm(){var a=$(this);hidePageForms(),a.children().show();var b=a.attr("id");$("#page_form_"+b).show()}function hidePageForms(){$(".page_form").hide(),$(".page_li a").hide()}hidePageForms(),$(".page_li").click(showPageForm);

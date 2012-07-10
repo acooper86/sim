@@ -116,7 +116,7 @@ html, body {
 }
 
 body {
-	background: url(/assets/stripe.png);
+	background: url(/assets/stripe-f53efbb1d959cb7ff1576c5145f76586.png);
 }
 
 /*---- Header styles for who app */
@@ -162,6 +162,9 @@ header nav {
 	top: -68px;
 	float:right;
 	margin-right:15px;
+}
+
+header nav ul {
 }
 
 header nav ul li {
@@ -274,6 +277,9 @@ footer p {
 
 footer nav {
 	float: right;
+}
+
+footer nav ul {
 }
 
 footer nav ul li {

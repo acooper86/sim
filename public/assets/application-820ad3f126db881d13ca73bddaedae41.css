@@ -100,12 +100,12 @@ input, select {
 
 html, body {
 	font-size:100%;
-	height:100%;
 }
 
 .container {
 	margin:1% 2%;
 	background-color:rgba(255,255,255,.8);
+	min-height:100%;
 	position:relative:
 }
 
@@ -116,7 +116,8 @@ html, body {
 }
 
 body {
-	background: url(/assets/stripe.png);
+	padding-bottom:60px;
+	background: url(<%= asset_path 'stripe.png' %>);
 }
 
 /*---- Header styles for who app */
@@ -162,6 +163,9 @@ header nav {
 	top: -68px;
 	float:right;
 	margin-right:15px;
+}
+
+header nav ul {
 }
 
 header nav ul li {
@@ -262,7 +266,6 @@ footer {
 	height: 65px;
 	background-color:rgb(51,35,0);
 	padding:10px;
-	margin-top:15px;
 }
 
 footer p {
@@ -274,6 +277,9 @@ footer p {
 
 footer nav {
 	float: right;
+}
+
+footer nav ul {
 }
 
 footer nav ul li {

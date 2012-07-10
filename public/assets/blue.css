@@ -1,0 +1,64 @@
+body{
+	background:rgb(70,80,250);
+	max-width:900px;
+	padding: 10px;
+}
+
+hgroup {
+	color:rgb(0,0,50);
+	font-family: Verdana, Geneva, sans-serif;
+	padding: 10px;
+	border: 4px solid rgb(0,0,50);
+	background:rgb(230,230,250);
+	height:75px;
+}
+
+hgroup h1 {
+	font-style: underline;
+	font-size: 2em;
+	float:right;
+}
+
+hgroup h2 {
+	clear:both;
+	float:right;
+	margin: 15px 0px;
+}
+
+nav{
+ border:3px solid rgb(0,0,50);
+ display:block;
+ background: rgb(230,230,250);
+ margin-top: 20px;
+ width:200px;
+ float:right;
+}
+
+nau ul{
+
+}
+
+nav ul li{
+	list-style:none;
+	display:block;
+	width: 200px;
+	height:35px;
+	padding-top:15px;
+	text-align:center;
+}
+
+nav ul li a{
+	color:rgb(0,0,50);
+	text-decoration:none;
+}
+
+nav ul li a:hover{
+	text-decoration:underline;
+}
+
+#box {
+	border:3px solid rgb(0,0,50);
+	background:rgb(230,230,250);
+	margin: 15px 250px 15px 0px;
+	padding: 5px;
+}

@@ -1,0 +1,29 @@
+/*--- Signup Style Sheet */
+#sign_in h1{
+	width: 40%;
+	border:3px solid rgb(150, 150, 150);
+	border-radius: 1em;
+	-moz-border-radius: 1em;
+	padding:1%;
+}
+
+#sign_in form {
+	width: 40%;
+	background-color:rgb(0,0,135);
+	padding: 1%;
+	margin-top: 1%;
+	border-radius: 1em;
+	-moz-border-radius: 1em;
+	border:3px solid rgb(200, 251, 255);
+}
+
+.field label {
+	color: rgb(255,255,255);
+	font-size: 1.2em;
+	text-shadow: 2px 2px 1px rgb(0,0,0);
+}
+
+/* Flash Fix*/
+footer {
+	position:relative;
+}
