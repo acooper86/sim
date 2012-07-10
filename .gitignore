@@ -13,3 +13,9 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+#OS generated files #
+#################
+.DS_Store
+.DS_Store?
+._*

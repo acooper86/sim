@@ -1,3 +1,5 @@
+<% stylesheet('sessions') %>
+<div id="sign_in">
 <h1>Sign in</h1>
 
 <%= form_for(:session, :url => sessions_path) do |f| %>
@@ -23,3 +25,4 @@
 
 <p>New user? <%= link_to "Sign up now!", signup_path %></p>
 <p>Forgetten Password?<%= link_to "Reset Password", new_password_reset_path %>
+</div>

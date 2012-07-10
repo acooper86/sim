@@ -1,5 +1,4 @@
 class PagesController < ApplicationController
-	layout "logged"
 	layout "page_edit", :only => "edit"
 	
 	def new
@@ -7,6 +6,8 @@ class PagesController < ApplicationController
 		@user = User.find(params[:user_id])
 		@website = @user.website
 		@page = @website.page.build
+		
+		render :layout => "logged"
 	end
 
 	def create
@@ -32,6 +33,7 @@ class PagesController < ApplicationController
 		@user = User.find(params[:user_id])
 		@website = @user.website
 		@page = Page.find(params[:id])
+		render :layout => "logged"
 	end
 	
 	def update

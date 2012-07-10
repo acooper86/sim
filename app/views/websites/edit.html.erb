@@ -1,63 +1,81 @@
-<% javascript('application.js') %>
+<% stylesheet('websites')%>
+<% javascript('websites')%>
 
-<h1>Websites Edit Page</h1>
-<%= button_to "Publish", publish_user_websites_path(@user) %>
-<%= form_for([@user, @website], :url => user_websites_path) do |f| %>
-	<%= render 'shared/error_messages', :object => f.object %>
-	<%= f.label :domain %>
-	<%= f.text_field :domain %>
-	
-	<%= f.label :title %>
-	<%= f.text_field :title %>
-	
-	<%= f.label :motto %>
-	<%= f.text_field :motto %>
-	
-	<%= f.label :description %>
-	<%= f.text_field :description %>
-	
-	<%= f.label :keywords %>
-	<%= f.text_field :keywords %>
-	
-	<%= f.label :theme %>
-	<%= f.select :theme, options_for_select([['green','green.css'],['blue','blue.css']], :selected => @website.theme) %>
-	
-	
-	<%= f.submit %>
-	
-<% end %>
+<h1>Your Website Settings</h1>
+<%= button_to "Publish", publish_user_websites_path(@user), :id => "publish_button" %>
 
-<%= link_to 'New Page', new_user_websites_page_path %>
-
-<section id="pagesList">
-	<%@page_list = pageList(@website)%>
-	<ul>
-	<% @page_list.each do |p|%>
-		<li id = "<%= p.id %>"><%= p.ptitle %> <%= link_to "Edit", edit_user_websites_page_path(@user,p) %>
-			<%= link_to "Show", user_websites_page_path(@user,p), :target => '_blank' %>
-			<%= link_to "Delete", user_websites_page_path(@user,p), :method => :delete %></li>
+<div id="website_form_box" class="round">
+	<%= form_for([@user, @website], :url => user_websites_path) do |f| %>
+		<%= render 'shared/error_messages', :object => f.object %>
+		<%= f.label :domain %>
+		<%= f.text_field :domain %>
+		
+		<%= f.label :title %>
+		<%= f.text_field :title %>
+	
+		<%= f.label :motto %>
+		<%= f.text_field :motto %>
+		<br />
+		<br />
+		<%= f.label :description %>
+		<%= f.text_field :description %>
+		
+		<%= f.label :keywords %>
+		<%= f.text_field :keywords %>
+		
+		<%= f.label :theme %>
+		<%= f.select :theme, options_for_select([['green','green.css'],['blue','blue.css']], :selected => @website.theme) %>
+		<br />
+		<br />
+		<%= f.submit %>
 	<% end %>
-	</ul>
-</section>
+</div>
 
-<% @page_list.each do |p|%>
-	<% @page = p %>
-		<%= form_for [@user,@website,@page], :url => "/users/#{@user.id}/websites/pages/#{@page.id}", :html => {:method => :put} do |f|  %>
-			<%= render 'shared/error_messages', :object => f.object %>
-			<%= f.label :ptitel %>
-			<%= f.text_field :ptitle %>	
-			<%= f.label :ptype, "Type:"%>
-			<%= f.radio_button :ptype,'Normal' %><%= f.label :ptype,'Normal' %>
-			<%= f.radio_button :ptype,'Blog' %><%= f.label :ptype,'Blog' %>
-			<%= f.radio_button :ptype, 'Schedule' %><%= f.label :ptype,'Schedule' %>
-			<%= f.radio_button :ptype,'Contact' %><%= f.label :ptype,'Contact' %>	
-			<%= f.label :indexed%>
-			<%= f.radio_button :indexed,'true' %><%= f.label :indexed,'Yes' %>
-			<%= f.radio_button :indexed,'false' %><%= f.label :indexed,'No' %>
-			<%= f.label :child %>
-			<%= f.radio_button :child,'true' %><%= f.label :child,'Yes' %>
-			<%= f.radio_button :child,'false' %><%= f.label :child,'No' %>
+<section id="page_edit_box">
+	<div id="page_box_head">
+		<h1>Your Pages</h1>
+		<%= link_to 'New Page', new_user_websites_page_path %>
+	</div>
 	
-			<%= f.submit %>
+	<section id="pagesList" class="round">
+		<%@page_list = pageList(@website)%>
+		<ul>
+		<% @page_list.each do |p|%>
+			<li class="page_li" id = "<%= p.id %>"><%= p.ptitle %> <%= link_to "Edit", edit_user_websites_page_path(@user,p) %>
+				<%= link_to "Show", user_websites_page_path(@user,p), :target => '_blank' %>
+				<%= link_to "Delete", user_websites_page_path(@user,p), :method => :delete %></li>
 		<% end %>
-<% end %>
+		</ul>
+	</section>
+	
+	<div id="page_forms">
+	<% @page_list.each do |p|%>
+		<% @page = p %>
+			<div class="page_form" id="page_form_<%= @page.id%>">
+				<h2><%= @page.ptitle%> Settings</h2>
+				<%= form_for [@user,@website,@page], :url => "/users/#{@user.id}/websites/pages/#{@page.id}", :html => {:method => :put} do |f|  %>
+					<%= render 'shared/error_messages', :object => f.object %>
+					<%= f.label :ptitle, "Title:" %>
+					<%= f.text_field :ptitle %>
+					<br /><br />	
+					<%= f.label :ptype, "Type:"%>
+					<%= f.radio_button :ptype,'Normal' %><%= f.label :ptype,'Normal' %>
+					<%= f.radio_button :ptype,'Blog' %><%= f.label :ptype,'Blog' %>
+					<%= f.radio_button :ptype, 'Schedule' %><%= f.label :ptype,'Schedule' %>
+					<%= f.radio_button :ptype,'Contact' %><%= f.label :ptype,'Contact' %>	
+					<br /><br />
+					<%= f.label :indexed, "Indexed:"%>
+					<%= f.radio_button :indexed,'true' %><%= f.label :indexed,'Yes' %>
+					<%= f.radio_button :indexed,'false' %><%= f.label :indexed,'No' %>
+					<br /><br />
+					<%= f.label :child, "Child:" %>
+					<%= f.radio_button :child,'true' %><%= f.label :child,'Yes' %>
+					<%= f.radio_button :child,'false' %><%= f.label :child,'No' %>
+					<br/><br/>
+					<%= f.submit %>
+			<% end %>
+		</div>
+	<% end %>
+	</div>
+</section>
+<br clear="all">

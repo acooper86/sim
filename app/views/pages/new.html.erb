@@ -1,4 +1,4 @@
-<h1>Pages New Page</h1>
+<h1>Create A New Page for <%= @website.title %></h1>
 
 <%= form_for([@user, @website, @page], :url => user_websites_pages_path ) do |f| %>
 	<%= render 'shared/error_messages', :object => f.object %>

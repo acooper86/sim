@@ -9,7 +9,7 @@ module ApplicationHelper
 	end
 	
 	def javascript(*files)
-		content_for(:head){javascript_include_tag(*files)}
+		content_for(:foot){javascript_include_tag(*files)}
 	end
 	
 	def stylesheet(*files)

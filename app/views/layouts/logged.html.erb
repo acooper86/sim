@@ -2,7 +2,11 @@
 <html>
 	<head>
 		<title><%= title %></title>
-		<%= render 'layouts/css' %>
+		<!--[if lt IE 9]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]--!>
+		<%= stylesheet_link_tag 'application', :media => 'screen' %>
+		<%= stylesheet_link_tag 'logged', :media => 'screen' %>
 		<%= yield(:head) %>
 	</head>
 	<body>
@@ -12,14 +16,18 @@
 			</header>
 			<section class="main round">
 				<%= render 'shared/quicklinks'%>
-				<% flash.each do |key, value| %>
-					<div class="flash <%= key %>"><%= value %></div>
-				<% end %>
-				<%= yield %>
+				<div id="view_box">
+					<% flash.each do |key, value| %>
+						<div class="flash <%= key %>"><%= value %></div>
+					<% end %>
+					<%= yield %>
+				</div>
 			</section>
 			<footer class= "round">
 				<%= render 'layouts/footer' %>
 			</footer>
 		</article>
+		<%=javascript_include_tag('application.js')%>
+		<%= yield(:foot)%>
 	</body>
 </html>

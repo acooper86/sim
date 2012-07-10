@@ -18,6 +18,8 @@ class WebsitesController < ApplicationController
 		@website.title = params[:website][:title]
 		@website.motto = params[:website][:motto]
 		@website.theme = params[:website][:theme]
+		@website.description = params[:website][:description]
+		@website.keywords = params[:website][:keywords]
 		if @website.save
 			flash[:success] = "Your website was successfully created."
 			redirect_to edit_user_websites_path
