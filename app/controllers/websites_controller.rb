@@ -39,7 +39,13 @@ class WebsitesController < ApplicationController
 		@user = User.find(params[:user_id])
 		@website = @user.website
 		
-		if @website.update_attributes(params[:website])
+		if params[:website][:order]
+			order_a = eval(params[:website][:order])
+			@website.update_attribute(:order,order_a)
+			flash[:success] = "Your website was successfully updated."
+			redirect_to edit_user_websites_path
+			
+		elsif @website.update_attributes(params[:website])
 			flash[:success] = "Your website was successfully updated."
 			redirect_to edit_user_websites_path
 		else
