@@ -1,7 +1,22 @@
 <div id="staticControl">
-	<button onclick="newText('h1')">New Title Head</button>
-	<button onclick="newText('h2')">New Section Head</button>
-	<button onclick="newText('h3')">New Subsection</button>
-	<button onclick="newText('p')">New Paragraph</button>
-	<button onclick="newImage()">New Picture</button>
+	<div id="title_div">
+		<button id="new_title" onclick="newText('h1')"> Title</button>
+		<button id="title_select">Select a different title.</button>
+	</div>
+	<ul id="header_menu">
+		<li class="title_menu_li"><button onclick="newText('h2')"><h2>Subsection</h2></button></li>
+		<li class="title_menu_li"><button onclick="newText('h3')"><h3>Subsection</h3></button></li>
+		<li class="title_menu_li"><button onclick="newText('h4')"><h4>Subsection</h4></button></li>
+		<li class="title_menu_li"><button onclick="newText('h5')"><h5>Subsection</h5></button></li>
+		<li class="title_menu_li"><button onclick="newText('h6')"><h6>Subsection</h6></button></li>
+	</ul>
+	<div id="new_element">
+		<button onclick="newText('p')">Text</button>
+		<button onclick="newImage('n')">Picture</button>
+		<button onclick="newImage('c')">Picture w/Caption</button>
+		<button onclick="newLink()">Link</button>
+	</div>
+	<div id="sort">
+		<button>Sort</button>
+	</div>
 </div>

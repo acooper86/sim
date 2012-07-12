@@ -13,15 +13,14 @@
 				<%= f.submit "Save and Return", :id => "up_submit" %>
 			<% end %>
 			<%= render 'layouts/static_controls' %>
-			
+			<%= render 'layouts/image_controls' %>
+			<%= render 'layouts/link_controls' %>
+			<%= render 'layouts/text_controls' %>
 			
 		</section>
 		<article class="user_page" id = <%= @page.id %>>
 			<%= render 'layouts/page_header' %>
 			<div id="box" contenteditable = true>
-				<%= render 'layouts/image_controls' %>
-				<%= render 'layouts/link_controls' %>
-				<%= render 'layouts/text_controls' %>
 				<%= yield %>
 			</div>
 		</article>
