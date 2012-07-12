@@ -33,7 +33,6 @@ class PagesController < ApplicationController
 		@user = User.find(params[:user_id])
 		@website = @user.website
 		@page = Page.find(params[:id])
-		render :layout => "logged"
 	end
 	
 	def update

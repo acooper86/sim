@@ -1,5 +1,6 @@
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require_self 
 
 //prepare document
@@ -10,6 +11,7 @@ $('#page_list li a').click(function(){return false;})
 bindImages();
 bindLinks();
 $('#up_submit').click(saveContent);
+buttonUp();
 
 // HIDE/SHOW CONTROLS BASED ON THE WHERE THE CLICK WAS
 $('body').click(function (evt) {
@@ -150,4 +152,11 @@ function updateLink(){
 //SAVE CHANGES FUNCTIONS
 function saveContent(){
      $('#page_content').val($('#box').html());
+}
+
+//UI BUTTON CALLS
+function buttonUp(){
+	$('#textControl button').button();
+	$('#staticControl button').button();
+	$('#up_submit').button();
 }

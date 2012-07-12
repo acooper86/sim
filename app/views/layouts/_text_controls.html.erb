@@ -1,13 +1,13 @@
-<div id="textControl">
-	<button onclick="txtC('bold')" class="textBtn">B</button>
-	<button onclick="txtC('italic')" class="textBtn">I</button>
-	<button onclick="txtC('underline')" class="textBtn">U</button>
-	<button onclick="txtC('indent')" class="textBtn">indent</button>
-	<button onclick="txtC('outdent')" class="textBtn">outdent</button>
-	<button onclick="txtC('justifyLeft')" class="textBtn">J-Left</button>
-	<button onclick="txtC('justifyCenter')" class="textBtn">J-Center</button>
-	<button onclick="txtC('justifyRight')" class="textBtn">J-Right</button>
-	<button onclick="txtC('insertOrderedList')" class="textBtn">OL</button>
-	<button onclick="txtC('insertUnorderedList')" class="textBtn">UL</button>
-	<button onclick="newA()" class="textBtn">A</button>
+<div id="textControl" contenteditible="false">
+	<button onclick="txtC('bold')" class="textBtn" id="bold_btn"><%=image_tag('text_bold.png')%></button>
+	<button onclick="txtC('italic')" class="textBtn" id="italic_btn"><%=image_tag('text_italic.png')%></button>
+	<button onclick="txtC('underline')" class="textBtn" id="underline_btn"><%=image_tag('text_underline.png')%></button>
+	<button onclick="txtC('indent')" class="textBtn" id="indent_btn"><%=image_tag('text_indent.png')%></button>
+	<button onclick="txtC('outdent')" class="textBtn" id="outdent_btn"><%=image_tag('text_indent_remove.png')%></button>
+	<button onclick="txtC('justifyLeft')" class="textBtn" id="jleft_btn"><%=image_tag('text_left.png')%></button>
+	<button onclick="txtC('justifyCenter')" class="textBtn" id="jcenter_btn"><%=image_tag('text_center.png')%></button>
+	<button onclick="txtC('justifyRight')" class="textBtn" id="jright_btn"><%=image_tag('text_right.png')%></button>
+	<button onclick="txtC('insertOrderedList')" class="textBtn" id="orderedli_btn"><%=image_tag('text_list_numbers.png')%></button>
+	<button onclick="txtC('insertUnorderedList')" class="textBtn"id="unorderedli_btn"><%=image_tag('text_list_bullets.png')%></button>
+	<button onclick="newA()" class="textBtn" id="link_btn"><%=image_tag('link_add.png')%></button>
 </div>

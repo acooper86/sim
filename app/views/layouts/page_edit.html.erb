@@ -2,8 +2,6 @@
 <html>
 	<head>
 		<title><%= title %></title>
-		<%= stylesheet_link_tag 'reset.css'%>
-		<%= stylesheet_link_tag 'pages.css', :media => 'screen' %>
 		<%= stylesheet_link_tag 'editor.css', :media => 'screen' %>
 		<%= stylesheet_link_tag @website.theme, :media => 'screen' %>
 	</head>
@@ -15,13 +13,15 @@
 				<%= f.submit "Save and Return", :id => "up_submit" %>
 			<% end %>
 			<%= render 'layouts/static_controls' %>
-			<%= render 'layouts/text_controls' %>
-			<%= render 'layouts/image_controls' %>
-			<%= render 'layouts/link_controls' %>
+			
+			
 		</section>
-		<article id = <%= @page.id %>>
+		<article class="user_page" id = <%= @page.id %>>
 			<%= render 'layouts/page_header' %>
 			<div id="box" contenteditable = true>
+				<%= render 'layouts/image_controls' %>
+				<%= render 'layouts/link_controls' %>
+				<%= render 'layouts/text_controls' %>
 				<%= yield %>
 			</div>
 		</article>
