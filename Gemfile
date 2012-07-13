@@ -13,7 +13,6 @@ gem 'uglifier'
 group :development do
 	gem 'rspec-rails'
 	gem 'sqlite3'
-	gem 'thin'
 end
 
 group :test do

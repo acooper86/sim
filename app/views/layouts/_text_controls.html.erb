@@ -2,6 +2,11 @@
 	<button onclick="txtC('bold')" class="textBtn" id="bold_btn"><%=image_tag('text_bold.png')%></button>
 	<button onclick="txtC('italic')" class="textBtn" id="italic_btn"><%=image_tag('text_italic.png')%></button>
 	<button onclick="txtC('underline')" class="textBtn" id="underline_btn"><%=image_tag('text_underline.png')%></button>
+	<button onclick="showColorBar()" class="textBtn" id="color_btn"><%=image_tag('color_wheel.png')%></button>
+	<button onclick="showFontBar()" class="textBtn" id="font_btn"><%=image_tag('style.png')%></button>
+	<button onclick="txtC('superscript')" class="textBtn" id="superscript_btn"><%=image_tag('text_superscript.png')%></button>
+	<button onclick="txtC('subscript')" class="textBtn" id="subscript_btn"><%=image_tag('text_subscript.png')%></button>
+	<button onclick="removeFormat()" class="textBtn" id="remove_format_btn"><%=image_tag('delete.png')%></button>
 	<button onclick="txtC('indent')" class="textBtn" id="indent_btn"><%=image_tag('text_indent.png')%></button>
 	<button onclick="txtC('outdent')" class="textBtn" id="outdent_btn"><%=image_tag('text_indent_remove.png')%></button>
 	<button onclick="txtC('justifyLeft')" class="textBtn" id="jleft_btn"><%=image_tag('text_left.png')%></button>
@@ -10,4 +15,39 @@
 	<button onclick="txtC('insertOrderedList')" class="textBtn" id="orderedli_btn"><%=image_tag('text_list_numbers.png')%></button>
 	<button onclick="txtC('insertUnorderedList')" class="textBtn"id="unorderedli_btn"><%=image_tag('text_list_bullets.png')%></button>
 	<button onclick="makeLink()" class="textBtn" id="link_btn"><%=image_tag('link_add.png')%></button>
+	<button onclick="txtC('undo')" class="textBtn" id="undo_btn"><%=image_tag('arrow_undo.png')%></button>
+	<button onclick="txtC('redo')" class="textBtn" id="redo_btn"><%=image_tag('arrow_redo.png')%></button>
+	<div id="colors">
+		<label>Text Color:</label><input type="text" id="color_store"></input>
+		<label>Background Color:</label><input type="text" id="bg_color_store"></input>
+	</div>
+	<div id="fonts">
+		<label>Font:</label>
+		<select id="font_store">
+			<option style='font:Georgia, serif' value='Georgia, serif'>Georgia</option>
+			<option style='font:"Palatino Linotype", "Book Antiqua", Palatino, serif' value='"Palatino Linotype", "Book Antiqua", Palatino, serif'>Palatino Linotype</option>
+			<option style='font:"Times New Roman", Times, serif' value='"Times New Roman", Times, serif'>Times New Roman</option>
+			<option style='font:Arial, Helvetica, sans-serif' value='Arial, Helvetica, sans-serif'>Arial</option>
+			<option style='font:"Arial Black", Gadget, sans-serif' value='"Arial Black", Gadget, sans-serif'>Arial Black</option>
+			<option style='font:"Comic Sans MS", cursive, sans-serif' value='"Comic Sans MS", cursive, sans-serif'>Comic Sans MS</option>
+			<option style='font:Impact, Charcoal, sans-serif' value='Impact, Charcoal, sans-serif'>Impact</option>
+			<option style='font:"Lucida Sans Unicode", "Lucida Grande", sans-serif' value='"Lucida Sans Unicode", "Lucida Grande", sans-serif'>Lucida Sans Unicode</option>
+			<option style='font:Tahoma, Geneva, sans-serif' value='Tahoma, Geneva, sans-serif'>Tahoma</option>
+			<option style='font:"Trebuchet MS", Helvetica, sans-serif' value='"Trebuchet MS", Helvetica, sans-serif'>Trebuchet MS</option>
+			<option style='font:Verdana, Geneva, sans-serif' value='Verdana, Geneva, sans-serif'>Verdana</option>
+			<option style='font:"Courier New", Courier, monospace' value='"Courier New", Courier, monospace'>Courier New</option>
+			<option style='font:"Lucida Console", Monaco, monospace' value='"Lucida Console", Monaco, monospace'>Lucida Console</option>
+		</select>
+		
+		<label>Font-size:</label>
+		<select id="font_size_store">
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+			<option value="6">6</option>
+			<option value="7">7</option>
+		</select>
+	</div>
 </div>

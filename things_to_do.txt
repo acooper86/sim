@@ -1,7 +1,7 @@
 style the error invaid email/password combination
 style the contact form
 
-create remember me checkbox
+
 
 refactor the password reset to be under the users controller
 
@@ -13,7 +13,13 @@ Check email activation functionality
 
 get correct_user, authorize_user filter to work in pages controller
 
-/////current
-add the list to the website edit page. Then I need to create the delete action, 
-and the update action. There won't be an edit page because It will be done on the website edit
-page. 
+////current
+I am working on the final stages of the website editor. Things left to be done include
+-create the elements creator, possibly shapes and widgets, code etc.
+-image bar needs border settings, align/float options, my image pic, rounded corners
+-link bar needs color picker, text-decoration, 
+
+
+//thoughts for v 2
+-adapt the editor to allow for the differences between browsers and adv. mozilla use.
+-create a table maker element and allow inline editing of the table

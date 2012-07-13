@@ -1,21 +1,45 @@
 <div id="staticControl">
 	<div id="title_div">
-		<button id="new_title" onclick="newText('h1')"> Title</button>
+		<button id="new_title" onclick="newElem('h1-p')"> Title and Text</button>
 		<button id="title_select">Select a different title.</button>
 	</div>
 	<ul id="header_menu">
-		<li class="title_menu_li"><button onclick="newText('h2')"><h2>Subsection</h2></button></li>
-		<li class="title_menu_li"><button onclick="newText('h3')"><h3>Subsection</h3></button></li>
-		<li class="title_menu_li"><button onclick="newText('h4')"><h4>Subsection</h4></button></li>
-		<li class="title_menu_li"><button onclick="newText('h5')"><h5>Subsection</h5></button></li>
-		<li class="title_menu_li"><button onclick="newText('h6')"><h6>Subsection</h6></button></li>
+		<li class="title_menu_li"><button onclick="newElem('p')"><p>Text<p></button></li>
+		<li class="title_menu_li"><button onclick="newElem('h1')"><h1>Title</h2></button></li>
+		<li class="title_menu_li"><button onclick="newElem('h2')"><h2>Title</h2></button></li>
+		<li class="title_menu_li"><button onclick="newElem('h3')"><h3>Title</h3></button></li>
+		<li class="title_menu_li"><button onclick="newElem('h4')"><h4>Title</h4></button></li>
+		<li class="title_menu_li"><button onclick="newElem('h5')"><h5>Title</h5></button></li>
+		<li class="title_menu_li"><button onclick="newElem('h6')"><h6>Title</h6></button></li>
 	</ul>
-	<div id="new_element">
-		<button onclick="newText('p')">Text</button>
-		<button onclick="newImage('n')">Picture</button>
-		<button onclick="newImage('c')">Picture w/Caption</button>
-		<button onclick="newLink()">Link</button>
+	
+	<div id="new_pic">
+		<button id="new_pic_t_x" onclick="newElem('tx')">Image, Title, & Text</button>
+		<button id="pic_select">Select a different title.</button>
 	</div>
+	<ul id="new_pic_menu">
+		<li class="image_menu_li"><button onclick="newElem('n')">Picture</button></li>
+		<li class="image_menu_li"><button onclick="newElem('c')">Picture w/Caption</button></li>
+		<li class="image_menu_li"><button onclick="newElem('x')">Picture w/Text</button></li>
+		<li class="image_menu_li"><button onclick="newElem('t')">Picture w/Title</button></li>
+		<li class="image_menu_li"><button onclick="newElem('tc')">Picture w/Title & Caption</button></li>
+		<li class="image_menu_li"><button onclick="newElem('txc')">Picture w/Title, Text, & Caption</button></li>
+	</ul>
+	
+	<div id="new_elem">
+		<button id="new_blank">Blank Element</button>
+		<button id="elem_select">Select a different Element Type.</button>
+	</div>
+	<ul id="new_elem_menu">
+		<li class="elem_menu_li"><button onclick="newElem('l')">Link</button></li>
+		<li class="elem_menu_li"><button onclick="newElem('map')">Map</button></li>
+		<li class="elem_menu_li"><button onclick="newElem('code')">Code</button></li>
+		<li class="elem_menu_li"><button onclick="newElem('f')">Facebook</button></li>
+		<li class="elem_menu_li"><button onclick="newElem('hr')">Horizontal Rule</button></li>
+		<li class="elem_menu_li"><button onclick="newElem('rec')">Rectangle</button></li>
+		<li class="elem_menu_li"><button onclick="newElem('cir')">circle</button></li>
+	</ul>
+		
 	<div id="sort">
 		<button>Sort</button>
 	</div>

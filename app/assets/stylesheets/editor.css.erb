@@ -1,6 +1,7 @@
 /*
 *= require reset
 *= require jquery-ui-1.8.21.custom.css
+*= require jquery.miniColors
 *= require_self
 */
 
@@ -20,18 +21,18 @@
 
 #staticControl button {
 	height:30px;
+	margin-bottom:5px;
 }
 
-#title_div {
+#title_div, #new_pic, #new_elem {
 	float:right;
-	margin-bottom:10px;
 }
 
-#title_div button{
+#title_div button, #new_pic button, #new_elem button{
 	float:left;
 }
 
-#header_menu .title_menu_li {
+#header_menu .title_menu_li, #new_pic_menu .image_menu_li, #new_elem_menu .elem_menu_li {
 	list-style: none;
 }
 
@@ -45,6 +46,9 @@
 	clear:right;
 }
 
+#sort button span.ui-button-text {
+	padding-top:0px;
+}
 /*Text Button Styles */
 .ui-button-text-only .ui-button-text {
     padding: 0.1em 0.3em 0em 0.3em;
