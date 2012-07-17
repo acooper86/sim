@@ -1,0 +1,13 @@
+<div id="codeEdit" contenteditible="false">
+		<button onclick="insertCode()">Insert Code</button>
+		<button class='codeField' onclick="floatCode('aleft')"><%=image_tag('align_left.png')%></button>
+		<button class='codeField' onclick="floatCode('aright')"><%=image_tag('align_right.png')%></button>
+		<button class='codeField' onclick="floatCode('acenter')"><%=image_tag('align_center.png')%></button>
+		<button class='codeField' onclick="floatCode('fleft')"><%=image_tag('float_left.png')%></button>
+    	<button class='codeField' onclick="floatCode('fright')"><%=image_tag('float_right.png')%></button>
+		<button onclick="destroyCode()"><%=image_tag('delete.png')%></button>
+		<br/>
+		<label>Text:</label><br />
+		<textarea id="code_text" rows="4" cols="30"></textarea>
+		
+</div>

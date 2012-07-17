@@ -2,6 +2,8 @@
 *= require reset
 *= require jquery-ui-1.8.21.custom.css
 *= require jquery.miniColors
+*= require map
+*= require pages
 *= require_self
 */
 
@@ -22,6 +24,10 @@
 #staticControl button {
 	height:30px;
 	margin-bottom:5px;
+}
+
+#staticControl ul {
+	clear:both;
 }
 
 #title_div, #new_pic, #new_elem {
@@ -62,6 +68,11 @@
 	padding: 3px;
 	border:1px solid #000;
 	background: rgb(240, 255,255);
+	z-index:100;
+}
+
+#imageEdit .ui-button {
+	margin-top:5px !important;
 }
 
 #linkEdit{
@@ -69,13 +80,23 @@
 	padding: 3px;
 	border:1px solid #000;
 	background: rgb(240, 255,255);
+	z-index:100;
 }
 
-#linkEdit{
+#mapEdit{
 	position:fixed;
 	padding: 3px;
 	border:1px solid #000;
 	background: rgb(240, 255,255);
+	z-index:100;
+}
+
+#codeEdit{
+	position:fixed;
+	padding: 3px;
+	border:1px solid #000;
+	background: rgb(240, 255,255);
+	z-index:100;
 }
 
 #textControl{
@@ -83,4 +104,5 @@
 	padding: 3px;
 	border:1px solid #000;
 	background: rgb(240, 255,255);
+	z-index:100;
 }

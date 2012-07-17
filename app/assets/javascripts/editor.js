@@ -2,21 +2,26 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require jquery.miniColors
+//= require gmap3.min
 //= require_self 
 
 //prepare document
 $('#imageEdit').hide();
 $('#textControl').hide();
 $('#linkEdit').hide();
-$('#page_list li a').click(function(){return false;})
+$('#mapEdit').hide();
+$('#codeEdit').hide();
+
+$('#page_list li a').click(function(){return false;});
 bindImages();
 bindLinks();
+mapInit();
 $('#up_submit').click(saveContent);
 buttonUp();
+bindBody();
+bindCodeBlocks();
 
 // HIDE/SHOW CONTROLS BASED ON THE WHERE THE CLICK WAS
-bindBody();
-
 function bindBody(){
 	$('body').click(function(evt) {
     	var target = $(evt.target)
@@ -28,7 +33,7 @@ function bindBody(){
   	      	
    		//check to see if the click is on a text element in the edit box
 	    if(target.is("#box p,#box h1,#box h2,#box h3,#box h4,#box h5,#box h6,#box h7,#box ol, #box ul, #box li, #box span, #box sub, #box sup, .textBtn, input, .miniColors, .miniColors-trigger, .miniColors-selector,.miniColors-huePicker,.miniColors-hues,.miniColors-colorPicker-inner,.miniColors-colorPicker,#colors label, #colors, #colors input, #colors a,#fonts,#fonts select, #fonts option")){
-	       if(target.is(":not(.textBtn,.miniColors, .miniColors-trigger, .miniColors-selector,.miniColors-huePicker,.miniColors-hues,.miniColors-colorPicker-inner,.miniColors-colorPicker,#colors label, #colors, #colors input, #colors a,#fonts,#fonts select, #fonts option, #imageEdit, .imageField,#linkEdit,.linkField)")){
+	       if(target.is(":not(.textBtn,.miniColors, .miniColors-trigger, .miniColors-selector,.miniColors-huePicker,.miniColors-hues,.miniColors-colorPicker-inner,.miniColors-colorPicker,#colors label, #colors, #colors input, #colors a,#fonts,#fonts select, #fonts option, #imageEdit, .imageField,#linkEdit,.linkField, .map_control, .code_block, .code_block *)")){
 	       	if (target.parent().attr('id') == "box" ) {
 	       		textClick(target,"0 -50");
 	       	} else if (target.parent().is("li,ol,ul,p,h1,h2,h3,h4,h5,h6,h7")){
@@ -42,8 +47,18 @@ function bindBody(){
 	    }
         	
 	    //check to see if the click is on an anchor in the box
-	    if ($('#linkEdit').is(':visible') && target.is(':not(a, #linkEdit,.linkField)')){
+	    if ($('#linkEdit').is(':visible') && target.is(':not(a, #linkEdit,.linkField,.link_control, .link_control option, .miniColors, .miniColors-trigger, .miniColors-selector,.miniColors-huePicker,.miniColors-hues,.miniColors-colorPicker-inner,.miniColors-colorPicker)')){
 	       $('#linkEdit').hide(); 
+	    }
+	    
+	    //check to see if the click is on a code block in the box
+	    if ($('#codeEdit').is(':visible') && target.is(':not(#codeEdit,#codeEdit label,#code_text, .code_block, .code_block *)')){
+	       $('#codeEdit').hide(); 
+	    }
+	    
+	    //check to see if the click is on map in the box
+	    if ($('#mapEdit').is(':visible') && target.is(':not(.map,.map div, .map div div, #mapEdit, .map_control, .map_control li)')){
+	       $('#mapEdit').hide(); 
 	    }
 	});
 }
@@ -91,6 +106,22 @@ function newElem(type) {
 		var link = $(document.createElement('p')).text('New Link').appendTo('#box');
 		link.replaceWith('<a href="simplissage.com">New Link</a>');
 		bindLinks();
+	}else if (type == 'map_c'){
+		var fig = createFigure().addClass('map_f').appendTo('#box');
+		var map = createMap().appendTo(fig);
+		createFigCaption().appendTo(fig);
+		map.gmap3();
+		bindMaps();
+	}else if (type == 'map'){
+		var fig = createFigure().addClass('map_f').appendTo('#box');
+		var map = createMap().appendTo(fig);
+		map.gmap3();
+		bindMaps();
+	}else if(type == 'hr'){
+		var div = createDiv().appendTo('#box');
+		createHR().appendTo(div);
+	}else if(type == 'code'){
+		createCode().appendTo('#box').click(editCode);
 	}else if(type == 'p'||'h1'||'h2'||'h3'||'h4'||'h4'||'h6'||'h7'){
 		createT(type).appendTo('#box');
 	}
@@ -121,6 +152,11 @@ function createDiv(){
 	return div;
 }
 
+function createHR(){
+	var hr = $(document.createElement('hr'));
+	return hr;
+}
+
 function createT(type){
 	if(type=="p"){
 		var sample = p_sample_text;
@@ -132,7 +168,16 @@ function createT(type){
 	return t;
 }
 
+function createMap(){
+	var map = $(document.createElement("div")).addClass('map ms').attr('data-size','ms').attr('data-address','').attr('data-zoom','8').attr('contenteditible','false').click(editMap);
+	return map;
+}
 		
+function createCode(){
+	var code = createDiv().attr('contenteditible','false').addClass('code_block').html('<p>Click on the code inside the code block to edit the settings. Be sure to paste all code exactly as it appears.</p>');
+	return code;
+}
+
 //EDIT TEXT COMMANDS
 function txtC(c) {
 	document.execCommand(c,false, null);
@@ -244,6 +289,14 @@ function readyImageBar(image){
 function bindImages(){
     $('#box img').bind('click', editImage);
 } 
+
+function floatImage(type){
+		image_store.attr('class',type).parent('figure').attr('class',type).children('figcaption').attr('class',type);
+}
+
+function destroyImage(){
+	image_store.remove();
+}
        
 //LINK FUNCTIONS
 function makeLink (){
@@ -310,15 +363,73 @@ function readyLinkBar(link){
 	$('#linkEdit').position({
 						my:"left bottom",
 						at:"left top",
-						of:link
+						of:link,
+						offset:"0px -25px"
 					}).show();
+    $('#a_colors').hide();
+    $('#a_fonts').hide();
     $('#href').focus();
 }
         
 function updateLink(){
    link_store.text($('#lText').val()).attr('href',$('#href').val());
 }
-        
+
+$('#a_color_store').miniColors({
+					change: function(hex,rgb){
+						changeColorA(hex);
+					}
+				});
+$('#a_bg_color_store').miniColors({
+					change: function(hex,rgb){
+						changeBackColorA(hex);
+					}
+				});
+				
+$('#a_font_store').change(changeFontA);
+$('#a_font_size_store').change(changeFontSizeA);
+
+function showColorBarA(){
+	$('#a_fonts').hide();
+	$('#a_colors').toggle();
+}
+
+function changeColorA(hex){
+	link_store.css('color',hex);
+}
+
+function changeBackColorA(hex){
+	link_store.css('backgroundColor',hex);
+}
+
+function showFontBarA(){
+	$('#a_colors').hide();
+	$('#a_fonts').toggle();
+}
+
+function changeFontA(){
+	var font = $('#a_font_store').val();
+	link_store.css('fontFamily',font);
+}
+
+function changeFontSizeA(){
+	var size = $('#a_font_size_store').val();
+	link_store.css('fontSize',size);
+}
+
+function linkCss(type){
+	link_store.toggleClass(type);
+}
+
+function floatLink(type){
+	link_store.removeClass('aleft aright acenter fleft fright').addClass(type);
+}
+	
+
+function destroyLink(){
+	link_store.remove();
+}
+       
 //SAVE CHANGES FUNCTIONS
 function saveContent(){
      $('#page_content').val($('#box').html());
@@ -327,6 +438,10 @@ function saveContent(){
 //UI BUTTON CALLS
 function buttonUp(){
 	$('#textControl button').button();
+	$('#linkEdit button').button();
+	$('#mapEdit button').button();
+	$('#imageEdit button').button();
+	$('#codeEdit button').button();
 	staticMenuPrep();
 	$('#staticControl button').button();
 	$('#up_submit').button();
@@ -382,15 +497,144 @@ function toggleSort(){
 		$('#sort button').button("option", "icons",{primary: "ui-icon-cancel"});
 		$('#box').attr('contenteditable','false').sortable("option", "disabled",false);
 		$('body, #box img, #box a').off();
+		$('div > hr').parent().each(function(){$(document.createElement('img')).attr('src','/assets/draggable.png').addClass('drag_img').appendTo(this);});
 		sort_state="end";
 	} else if(sort_state=="end"){
 		$('#sort button').button("option", "icons",{primary: "ui-icon-arrowthick-2-n-s"});
 		$('#box').attr('contenteditable','true').sortable("option","disabled",true);
+		$('.drag_img').remove();
 		bindLinks();
 		bindImages();
 		bindBody();
 		sort_state="start";
 	}
+}
+
+//MAP EDITOR FUNCTIONS
+var map = ""
+
+function mapInit(){
+	$('.map').each(function(){
+			map = this;
+			address = $(map).attr('data-address');
+			zoom = parseInt($(map).attr('data-zoom'));
+			$(map).gmap3(
+				{action:'clear', name:'marker'},
+				{
+					action: 'addMarker',
+					address: address,
+					map:{
+					center:true,
+					zoom: zoom
+					}
+				}
+			);
+		});
+	bindMaps();	
+}
+
+function editMap(){
+	map = this
+	
+	//set the value of the fields = to attributes
+    var add = $(map).attr('data-address');
+    $('#address').val(add);
+    var zoom = $(map).attr('data-zoom');
+    $('#zoom').val(zoom);
+    var size = $(map).attr('data-size');
+    $('#map_size').val(size);
+            
+    //move and display the map edit bar
+    readyMapBar(map); 
+	
+	//add event listeners
+	$('#address').change(updateMap);
+	$('#zoom').change(updateMap);
+	$('#map_size').change(changeMapSize);
+}
+
+function readyMapBar(map){
+	$('#mapEdit').position({
+						my:"left bottom",
+						at:"left top",
+						of:map
+					}).show();
+    $('#address').focus();
+}
+
+function bindMaps(){
+	$('.map').click(editMap);
+}
+
+function updateMap(){
+	var address = $('#address').val();
+	$(map).attr('data-address', address);
+	var zoom	= $('#zoom').val();
+	$(map).attr('data-zoom', zoom);
+	var zoom	= parseInt(zoom);
+					
+	//update map
+	$(map).gmap3(
+		{action:'clear', name:'marker'},
+		{
+			action: 'addMarker',
+			address: address,
+			map:{
+			center:true,
+			zoom: zoom
+			},
+		}
+	);
+}
+
+function changeMapSize(){
+	var code = $('#map_size').val();
+	$(map).attr('data-size', code).attr('class',code + " map");
+}
+
+function floatMap(type){
+		$(map).removeClass('aleft aright acenter fleft fright').addClass(type).parent('figure').children('figcaption').attr('class',type);
+}
+
+function destroyMap(){
+	$(map).gmap3('destroy').remove();
+}
+
+//EDIT CODE FUNCTION
+var code_block = "";	
+function editCode(){
+	code_block = this;
+	
+	var code = $(this).html();
+	$('#code_text').val(code);
+	
+	readyCodeBar();
+}
+
+function readyCodeBar(){
+	$('#codeEdit').position({
+						my:"left bottom",
+						at:"left top",
+						of:code_block
+					}).show();
+    $('#code_text').focus();
+}
+
+function insertCode(){
+	var code = $('#code_text').val();
+	$(code_block).html(code);
+}
+
+function bindCodeBlocks(){
+	$('.code_block').click(editCode);
+}
+
+function floatCode(type){
+		$(code_block).removeClass('aleft aright acenter fleft fright').addClass(type).parent('figure').children('figcaption').attr('class',type);
+}
+
+function destroyCode(){
+	$(code_block).remove();
 }
 
 //SAMPLE TEXT FOR CREATES

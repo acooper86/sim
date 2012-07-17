@@ -1,0 +1,44 @@
+.map {
+	height 100%
+}
+
+.map_f {
+	display:block;
+}
+
+.sl{
+	width:200px;
+	height:400px;
+}
+.sw{
+	width:400px;
+	height:200px;
+}
+.ss{
+	width:300px;
+	height:300px;
+}
+.ml{
+	width:300px;
+	height:500px;
+}
+.mw{
+	width:500px;
+	height:300px;
+}
+.ms{
+	width:400px;
+	height:400px;
+}
+.ll{
+	width:400px;
+	height:600px;
+}
+.lw{
+	width:600px;
+	height:400px;
+}
+.ls{
+	width:500px;
+	height:500px;
+}

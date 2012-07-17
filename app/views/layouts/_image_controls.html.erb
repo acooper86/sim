@@ -1,10 +1,15 @@
 <div id="imageEdit" contenteditible="false">
-	<form>
 		<label>Location:</label>
 		<input id='location' type="text" class="imageField"/>
 	    <label>Title:</label>
 		<input id='title' type="text" class="imageField"/>
     	<label>Alternate Text:</label>
 		<input id='alttext' type="text" class="imageField"/>
-	</form>
+		<br/>
+		<button class='imageField' onclick="floatImage('aleft')"><%=image_tag('align_left.png')%></button>
+		<button class='imageField' onclick="floatImage('aright')"><%=image_tag('align_right.png')%></button>
+		<button class='imageField' onclick="floatImage('acenter')"><%=image_tag('align_center.png')%></button>
+		<button class='imageField' onclick="floatImage('fleft')"><%=image_tag('float_left.png')%></button>
+    	<button class='imageField' onclick="floatImage('fright')"><%=image_tag('float_right.png')%></button>
+		<button onclick="destroyImage()"><%=image_tag('delete.png')%></button>
 </div>

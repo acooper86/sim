@@ -1,8 +1,6 @@
 style the error invaid email/password combination
 style the contact form
 
-
-
 refactor the password reset to be under the users controller
 
 get the permanent cookie/remember me checkbox to work
@@ -13,13 +11,27 @@ Check email activation functionality
 
 get correct_user, authorize_user filter to work in pages controller
 
-////current
-I am working on the final stages of the website editor. Things left to be done include
--create the elements creator, possibly shapes and widgets, code etc.
--image bar needs border settings, align/float options, my image pic, rounded corners
--link bar needs color picker, text-decoration, 
+get the favicon to work
 
+////Big things left to do for v1.0
+create the contact manager
+create the blog
+	-blog resource
+	-blog post resource
+	-comment resource
+create the mailer resource
+	-list resource
+	-emails resource
+create the schedule resource
+	-????
+
+finish the publish function including the folder making, integration of page types/ajax
+
+////current
+-include map.css and map.js available for the published sites
 
 //thoughts for v 2
 -adapt the editor to allow for the differences between browsers and adv. mozilla use.
+-imagebar can have border settings, rounded corners, etc.
 -create a table maker element and allow inline editing of the table
+-make control selects into sliders

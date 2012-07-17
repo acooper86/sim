@@ -1,8 +1,51 @@
 <div id="linkEdit" contenteditible="false">
-	<form>
 		<label>Text:</label>
 		<input id='lText' type="text" class="linkField"/>
 	    <label>Target:</label>
 		<input id='href' type="text" class="linkField"/>
-	</form>
+		<button class='link_control' onclick="linkCss('bold')"><%=image_tag('text_bold.png')%></button>
+		<button class='link_control' onclick="linkCss('italic')"><%=image_tag('text_italic.png')%></button>
+		<button class='link_control' onclick="linkCss('underline')"><%=image_tag('text_underline.png')%></button>
+		<button class='link_control' onclick="showColorBarA()"><%=image_tag('color_wheel.png')%></button>
+		<button class='link_control' onclick="showFontBarA()"><%=image_tag('style.png')%></button>
+		<button class='link_control' onclick="floatLink('aleft')"><%=image_tag('align_left.png')%></button>
+		<button class='link_control' onclick="floatLink('aright')"><%=image_tag('align_right.png')%></button>
+		<button class='link_control' onclick="floatLink('acenter')"><%=image_tag('align_center.png')%></button>
+		<button class='link_control' onclick="floatLink('fleft')"><%=image_tag('float_left.png')%></button>
+    	<button class='link_control' onclick="floatLink('fright')"><%=image_tag('float_right.png')%></button>
+		<button onclick="destroyLink()"><%=image_tag('delete.png')%></button>
+		
+		<div id="a_colors">
+			<label class='link_control'>Text Color:</label><input type="text" id="a_color_store" class='link_control'></input>
+			<label class='link_control'>Background Color:</label><input type="text" id="a_bg_color_store" class='link_control'></input>
+		</div>
+		<div id="a_fonts">
+			<label class='link_control'>Font:</label>
+			<select id="a_font_store" class='link_control'>
+				<option style='font:Georgia, serif' value='Georgia, serif'>Georgia</option>
+				<option style='font:"Palatino Linotype", "Book Antiqua", Palatino, serif' value='"Palatino Linotype", "Book Antiqua", Palatino, serif'>Palatino Linotype</option>
+				<option style='font:"Times New Roman", Times, serif' value='"Times New Roman", Times, serif'>Times New Roman</option>
+				<option style='font:Arial, Helvetica, sans-serif' value='Arial, Helvetica, sans-serif'>Arial</option>
+				<option style='font:"Arial Black", Gadget, sans-serif' value='"Arial Black", Gadget, sans-serif'>Arial Black</option>
+				<option style='font:"Comic Sans MS", cursive, sans-serif' value='"Comic Sans MS", cursive, sans-serif'>Comic Sans MS</option>
+				<option style='font:Impact, Charcoal, sans-serif' value='Impact, Charcoal, sans-serif'>Impact</option>
+				<option style='font:"Lucida Sans Unicode", "Lucida Grande", sans-serif' value='"Lucida Sans Unicode", "Lucida Grande", sans-serif'>Lucida Sans Unicode</option>
+				<option style='font:Tahoma, Geneva, sans-serif' value='Tahoma, Geneva, sans-serif'>Tahoma</option>
+				<option style='font:"Trebuchet MS", Helvetica, sans-serif' value='"Trebuchet MS", Helvetica, sans-serif'>Trebuchet MS</option>
+				<option style='font:Verdana, Geneva, sans-serif' value='Verdana, Geneva, sans-serif'>Verdana</option>
+				<option style='font:"Courier New", Courier, monospace' value='"Courier New", Courier, monospace'>Courier New</option>
+				<option style='font:"Lucida Console", Monaco, monospace' value='"Lucida Console", Monaco, monospace'>Lucida Console</option>
+			</select>
+			
+			<label class='link_control'>Font-size:</label>
+			<select id="a_font_size_store" class='link_control'>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+			</select>
+		</div>
 </div>

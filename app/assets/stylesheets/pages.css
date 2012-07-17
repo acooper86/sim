@@ -2,3 +2,44 @@
   Place all the styles related to the matching controller here.
   They will automatically be included in application.css.
 */
+a {
+	text-decoration:none;
+}
+
+.fleft{
+	float:left;
+	clear:left;
+}
+
+.fright{
+	float:right;
+	clear:right;
+}
+
+.aright{
+	display:block;
+	margin-left:auto;
+	text-align:right;
+}
+
+.aleft{
+}
+
+.acenter{
+	display:block;
+	margin-left:auto;
+	margin-right:auto;
+	text-align:center;
+}
+
+.bold{
+	font-weight:bold;
+}
+
+.underline{
+	text-decoration:underline;
+}
+
+.italic {
+	font-style:italic;
+}

@@ -1,0 +1,44 @@
+<div class='map_control' id="mapEdit">
+    <label>Address:</label>
+    <input id="address" class='map_control' type="textbox" value="">
+    <label>Zoom Default:</label>
+    <select id="zoom" class='map_control'>
+    	<option value="20">20</option>
+    	<option value="19">19</option>
+    	<option value="18">18</option>
+    	<option value="17">17</option>
+    	<option value="16">16</option>
+    	<option value="15">15</option>
+    	<option value="14">14</option>
+    	<option value="13">13</option>
+    	<option value="12">12</option>
+    	<option value="11">11</option>
+    	<option value="10">10</option>
+    	<option value="9">9</option>
+    	<option value="8">8</option>
+    	<option value="7">7</option>
+    	<option value="6">6</option>
+		<option value="5">5</option>
+    	<option value="4">4</option>
+    	<option value="3">3</option>
+    	<option value="2">2</option>
+		<option value="1">1</option>
+	</select>
+	<select id="map_size" class='map_control'>
+    	<option value="sl">Small Long</option>
+    	<option value="sw">Small Wide</option>
+    	<option value="ss">Small Square</option>
+    	<option value="ml">Medium Long</option>
+    	<option value="mw">Medium Wide</option>
+    	<option value="ms">Medium Square</option>
+    	<option value="ll">Large Long</option>
+    	<option value="lw">Large Wide</option>
+    	<option value="ls">Large Square</option>
+    </select>
+    <button class='map_control' onclick="floatMap('aleft')"><%=image_tag('align_left.png')%></button>
+	<button class='map_control' onclick="floatMap('aright')"><%=image_tag('align_right.png')%></button>
+	<button class='map_control' onclick="floatMap('acenter')"><%=image_tag('align_center.png')%></button>
+	<button class='map_control' onclick="floatMap('fleft')"><%=image_tag('float_left.png')%></button>
+    <button class='map_control' onclick="floatMap('fright')"><%=image_tag('float_right.png')%></button>
+	<button onclick="destroyMap()"><%=image_tag('delete.png')%></button>
+</div>

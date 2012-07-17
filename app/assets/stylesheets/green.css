@@ -1,5 +1,9 @@
+html{
+	height:100%;
+}
 body{
 	background:green;
+	height:100%;
 }
 
 .user_page {
