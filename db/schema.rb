@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120706202346) do
+ActiveRecord::Schema.define(:version => 20120718200023) do
+
+  create_table "images", :force => true do |t|
+    t.string   "name"
+    t.string   "alt"
+    t.string   "image"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.boolean  "profile"
+    t.boolean  "logo"
+  end
 
   create_table "pages", :force => true do |t|
     t.integer  "website_id"

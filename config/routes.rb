@@ -7,6 +7,8 @@ Sim::Application.routes.draw do
   		match '/activate', :to => "users#activate"
   	end
   	
+  	resources :images
+  	
   	resource :websites do
   		member do
   			match '/publish', :to => "websites#publish", :via => :post

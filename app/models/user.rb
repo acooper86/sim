@@ -3,6 +3,7 @@ require 'digest'
 class User < ActiveRecord::Base
 	has_one :website
 	has_many :page, :through => :website
+	has_many :image
 
 	attr_accessor :password
 	attr_accessible(:first_name, :last_name, :email, :password, :password_confirmation,:address_l1,

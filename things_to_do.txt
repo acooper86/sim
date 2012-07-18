@@ -3,15 +3,13 @@ style the contact form
 
 refactor the password reset to be under the users controller
 
-get the permanent cookie/remember me checkbox to work
-
-1. style quicklinks to float left => style the user/website controllers
-
 Check email activation functionality
 
 get correct_user, authorize_user filter to work in pages controller
 
 get the favicon to work
+
+style the images controller and actions
 
 ////Big things left to do for v1.0
 create the contact manager
@@ -28,7 +26,12 @@ create the schedule resource
 finish the publish function including the folder making, integration of page types/ajax
 
 ////current
--include map.css and map.js available for the published sites
+starting on the contacts manager functionality
+major steps left:
+	model
+	route
+	controller
+	views
 
 //thoughts for v 2
 -adapt the editor to allow for the differences between browsers and adv. mozilla use.

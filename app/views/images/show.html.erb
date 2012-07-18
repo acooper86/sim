@@ -1,0 +1,29 @@
+<h1>Edit <%= @image.name%></h1>
+
+<div>
+	<h1>Name: <%= @image.name %></h1>
+	<h2>Alt Text: <%= @image.alt %></h2>
+	<div id="mark">
+		<% if @image.profile == false %>
+			<%= form_for([@user, @image]) do |f| %>	
+				<%= hidden_field_tag 'profile', true %>
+				<%= f.submit "Mark as Profile Picture" %>
+			<% end %>
+		<% else %>
+			<h2>Marked as 'Profile Picture'<h2>
+		<% end %>
+		
+		<% if @image.logo == false %>
+			<%= form_for([@user, @image]) do |f| %>	
+				<%= hidden_field_tag 'logo', true %>
+				<%= f.submit "Mark as Logo Picture" %>
+			<% end %>
+		<% else %>
+			<h2>Marked as 'Logo Picture'<h2>
+		<% end %>
+	<div>
+	<h2>Thumb:<h2>
+	<%= image_tag @image.image_url(:thumb) %>	
+	<h2>Full:</h2>
+	<%= image_tag @image.image_url %>
+</div>

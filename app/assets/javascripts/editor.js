@@ -27,7 +27,9 @@ function bindBody(){
     	var target = $(evt.target)
    	
     	//check to see if click is not on an image, in the imageedit area, a field
-    	if($('#imageEdit').is(':visible') && target.is(':not(img, #imageEdit, .imageField)')){
+    	if($('#imageEdit').is(':visible') && target.is(':not(img, #imageEdit, .imageField, #imageEdit *)')){
+    		$('#image_settings').show();
+    		$('#MyImages').hide();
     		$('#imageEdit').hide();
     	}
   	      	
@@ -268,6 +270,19 @@ function editImage(){
     $('#location').change(updateImage);
     $('#title').change(updateImage);
     $('#alttext').change(updateImage);
+	$('.image').click(updateMyImage);
+}
+
+function updateMyImage(){
+	var loc = $(this).attr('data-url');
+    var alt = $(this).attr('data-title');
+    var title = $(this).attr('data-alt');
+	
+	$('#location').val(loc);
+    $('#alttext').val(alt);
+    $('#title').val(title);
+	
+	updateImage();
 }
         
 function updateImage(){
@@ -278,6 +293,7 @@ function updateImage(){
 }
 
 function readyImageBar(image){
+	$('#my_images').hide();
 	$('#imageEdit').position({
 						my:"left bottom",
 						at:"left top",
@@ -289,6 +305,11 @@ function readyImageBar(image){
 function bindImages(){
     $('#box img').bind('click', editImage);
 } 
+
+function showMyImages(){
+	$('#image_settings').toggle();
+	$('#my_images').toggle();
+}
 
 function floatImage(type){
 		image_store.attr('class',type).parent('figure').attr('class',type).children('figcaption').attr('class',type);

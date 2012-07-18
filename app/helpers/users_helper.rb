@@ -57,3 +57,22 @@ module UsersHelper
 	]
   end
 end
+
+def myImagesButtonList(user)
+	button_list = ""
+	images = user.image
+	images.each do |i|
+		button = makeImageButton(i)
+		button_list << button
+	end
+	return button_list.html_safe
+end
+
+def makeImageButton(image);
+	alt = image.alt
+	title = image.name
+	url = image.image_url
+	thumb = image.image_url(:thumb)
+	button = '<button class="image" data-alt="'<< alt << '" data-title="' << title <<'" data-url="'<< url <<'"><img src="' << thumb << '"/></button>'
+	return button
+end

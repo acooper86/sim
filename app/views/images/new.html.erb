@@ -1,0 +1,16 @@
+<h1>Create A New Image for <%= @user.first_name %></h1>
+
+<%= form_for([@user, @image], :html => {:multipart => true}) do |f| %>
+	<%= render 'shared/error_messages', :object => f.object %>
+	<%= f.label :name %>
+	<%= f.text_field :name %>	
+	<%= f.label :alt %>
+	<%= f.text_field :alt %>	
+	<%= f.label :image %>
+	<%= f.file_field :image %>
+	<%= f.label :remote_image_url, "or image url" %>
+	<%= f.text_field :remote_image_url %>
+	
+	<%= f.submit %>
+	
+<% end %>

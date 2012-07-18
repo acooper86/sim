@@ -10,6 +10,10 @@ gem 'therubyracer'
 
 gem 'uglifier'
 
+gem 'rmagick'
+
+gem 'carrierwave'
+
 group :development do
 	gem 'rspec-rails'
 	gem 'sqlite3'
