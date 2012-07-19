@@ -58,11 +58,13 @@ class ImagesController < ApplicationController
 	end
 	
 	def show
+		@title = "View your Image"
 		@user = User.find(params[:user_id])
 		@image = Image.find(params[:id])
 	end
 	
 	def index
+		@title = "View all your Images"
 		@user = User.find(params[:user_id])
 		@images = @user.image
 	end

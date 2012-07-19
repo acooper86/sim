@@ -9,6 +9,8 @@ Sim::Application.routes.draw do
   	
   	resources :images
   	
+  	resources :contacts
+  	
   	resource :websites do
   		member do
   			match '/publish', :to => "websites#publish", :via => :post

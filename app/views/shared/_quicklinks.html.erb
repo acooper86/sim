@@ -6,6 +6,7 @@
 		<% else %>
 		<li><%= link_to 'Website', new_user_websites_path(current_user, current_user.website) %></li>
 		<% end %>
-		<li><%= link_to 'Images', user_images_path(current_user) %></li>			
+		<li><%= link_to 'Images', user_images_path(current_user) %></li>
+		<li><%= link_to 'Contacts', user_contacts_path(current_user) %></li>			
 	</ul>
 </nav>

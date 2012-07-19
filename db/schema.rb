@@ -11,7 +11,31 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120718200023) do
+ActiveRecord::Schema.define(:version => 20120718214619) do
+
+  create_table "contacts", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "address_l1"
+    t.string   "address_l2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.string   "phone"
+    t.string   "email"
+    t.string   "secondary_email"
+    t.string   "business"
+    t.date     "birth_date"
+    t.string   "ctype"
+    t.boolean  "email_list"
+    t.datetime "opt_in"
+    t.string   "created_from"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "contacts", ["user_id"], :name => "index_contacts_on_user_id"
 
   create_table "images", :force => true do |t|
     t.string   "name"

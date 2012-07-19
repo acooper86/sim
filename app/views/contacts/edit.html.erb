@@ -1,0 +1,25 @@
+<h1>Edit Contact: <%= @contact.first_name %></h1>
+
+<%= form_for([@user, @contact]) do |c| %>
+	<%= render 'shared/error_messages', :object => c.object %>
+	<%= c.label :first_name %>
+	<%= c.text_field :first_name %>	
+	<%= c.label :last_name %>
+	<%= c.text_field :last_name %>	
+	<%= c.label :email %>
+	<%= c.text_field :email %>
+	<%= c.label :phone %>
+	<%= c.text_field :phone %>
+	<%= c.label :address_l1, "Address:" %>
+	<%= c.text_field :address_l1 %>
+	<%= c.label :address_l2, "Address Line 2:" %>
+	<%= c.text_field :address_l2 %>
+	<%= c.label :city %>
+	<%= c.text_field :city %>
+	<%= c.label :state %>
+	<%= c.text_field :state %>
+	<%= c.label :zip %>
+	<%= c.text_field :zip %>
+	<%= c.submit %>
+	
+<% end %>

@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
 	has_one :website
 	has_many :page, :through => :website
 	has_many :image
+	has_many :contact
 
 	attr_accessor :password
 	attr_accessible(:first_name, :last_name, :email, :password, :password_confirmation,:address_l1,
