@@ -11,7 +11,23 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120718214619) do
+ActiveRecord::Schema.define(:version => 20120719162238) do
+
+  create_table "blogs", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.integer  "per_page"
+    t.string   "allow_comments"
+    t.integer  "per_comments"
+    t.boolean  "recent"
+    t.boolean  "tag_cloud"
+    t.boolean  "categories"
+    t.boolean  "archive"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "blogs", ["user_id"], :name => "index_blogs_on_user_id"
 
   create_table "contacts", :force => true do |t|
     t.integer  "user_id"
@@ -58,6 +74,19 @@ ActiveRecord::Schema.define(:version => 20120718214619) do
     t.datetime "created_at",                       :null => false
     t.datetime "updated_at",                       :null => false
   end
+
+  create_table "posts", :force => true do |t|
+    t.integer  "blog_id"
+    t.string   "title"
+    t.text     "content"
+    t.string   "ptype"
+    t.string   "tags"
+    t.string   "categories"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "posts", ["blog_id"], :name => "index_posts_on_blog_id"
 
   create_table "users", :force => true do |t|
     t.string   "first_name"

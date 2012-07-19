@@ -1,0 +1,28 @@
+<h1><%= @blog.title %> Dashboard</h1>
+<h2>New Blog Post</h2>
+	<%= link_to "New Post", new_user_blogs_post_path(@user)%>
+<h2>Recent Blog Posts</h2>
+	<%= link_to "View All", user_blogs_posts_path(@user)%>
+	<% if @posts.empty?%>
+		<h2>No Posts Yet To View. Add a Post first. </h2>
+	<% else %>
+		<%@posts.each do |p|%>
+			<div>
+				<h2>Title:<%= p.title %></h2>
+				<%= link_to 'edit', edit_user_blogs_post_path(@user,p)%>
+				<%= link_to 'show', user_blogs_post_path(@user,p)%>
+				<%= button_to 'delete', user_blogs_post_path(@user,p), :method => :delete%>
+			</div>
+		<% end %>	
+	<% end %>
+
+<h2>Settings Overview</h2>
+	<%= link_to 'Edit Settings', edit_user_blogs_path(@user)%>
+	<p>Title:<%=@blog.title %></p>
+	<p>Entries per Page:<%=@blog.per_page %></p>
+	<p>Allow Comments:<%=@blog.allow_comments %></p>
+	<p>Comments Show per Post:<%=@blog.per_comments %></p>
+	<p>Show Recent Widget:<%=@blog.recent%></p>
+	<p>Show Tag Cloud Widget:<%=@blog.tag_cloud %></p>
+	<p>Show Categories Widget:<%=@blog.categories %></p>
+	<p>Show Archive Widget:<%=@blog.archive %></p>

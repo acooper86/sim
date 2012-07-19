@@ -1,0 +1,15 @@
+<h1>Create a New Post</h1>
+<%= form_for([@user,@blog,@post],:url => user_blogs_posts_path) do |p| %>
+	<%= render 'shared/error_messages', :object => p.object %>
+	<%=p.label :title%>
+	<%=p.text_field :title %>
+	<%=p.label :content%>
+	<%=p.text_area :content %>
+	<%=p.label :tags%>
+	<%=p.text_field :tags %>
+	<%=p.label :categories%>
+	<%=p.text_field :categories %>
+	<%=p.label :ptype, 'Type'%>
+	<%=p.select(:ptype,['Normal','Image','Link','Video'])%>	
+	<%=p.submit%>
+<% end %>

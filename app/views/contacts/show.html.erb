@@ -3,10 +3,19 @@
 <div>
 	<h1>Name: <%= @contact.first_name << " " << @contact.last_name %></h1>
 	<h2>Email: <%= @contact.email %></h2>
+	<p>Type:<%= @contact.ctype %></p>
+	<p>Other Email:<%= @contact.secondary_email %></p>
 	<p>Phone:<%= @contact.phone %></p>
 	<p>Address:<%= @contact.address_l1 %></p>
 	<p>Address line 2:<%= @contact.address_l2 %></p>
 	<p>City:<%= @contact.city %></p>
 	<p>State:<%= @contact.state %></p>
 	<p>Zip:<%= @contact.zip %></p>
+	<p>Business:<%= @contact.business %></p>
+	<p>Birthday:<%= @contact.birth_date %></p>
+	<p>Email List:<%= @contact.email_list %></p>
+	<p>Opted In On:<%= @contact.opt_in %></p>
+	<p>Created By:<%= @contact.created_from %></p>
+	<%= link_to 'edit', edit_user_contact_path(@user,@contact)%>
+	<%= button_to 'delete', user_contact_path(@user,@contact), :method => :delete%>
 </div>

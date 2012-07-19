@@ -5,25 +5,23 @@
 <% if @contacts.empty?%>
 	<h2>No Contacts Yet To View. Add a Contact first. </h2>
 <% else %>
+	<%= will_paginate @contacts %>
+	<table id="contacts">
+	<th>Name</th>
+	<th>Email</th>
+	<th>Phone</th>
+	<th>Options</th>
 	<%@contacts.each do |c|%>
-		<div>
-			<h1>Name: <%= c.first_name << " " << c.last_name %></h1>
-			<h2>Email: <%= c.email %></h2>
-			<p>Other Email:<%= c.secondary_email %></p>
-			<p>Phone:<%= c.phone %></p>
-			<p>Address:<%= c.address_l1 %></p>
-			<p>Address line 2:<%= c.address_l2 %></p>
-			<p>City:<%= c.city %></p>
-			<p>State:<%= c.state %></p>
-			<p>Zip:<%= c.zip %></p>
-			<p>Business:<%= c.business %></p>
-			<p>Birthday:<%= c.birth_date %></p>
-			<p>Email List:<%= c.email_list %></p>
-			<p>Opted In On:<%= c.opt_in %></p>
-			<p>Created By:<%= c.created_from %></p>
-			<%= link_to 'edit', edit_user_contact_path(@user,c)%>
-			<%= link_to 'show', user_contact_path(@user,c)%>
-			<%= button_to 'delete', user_contact_path(@user,c), :method => :delete%>
-		</div>
-	<% end %>	
+		<tr>
+			<td><%= c.first_name << " " << c.last_name %></td>
+			<td><%= c.email %></td>
+			<td><%= c.phone %></td>
+			<td>
+				<%= link_to 'edit', edit_user_contact_path(@user,c)%>
+				<%= link_to 'show', user_contact_path(@user,c)%>
+				<%= button_to 'delete', user_contact_path(@user,c), :method => :delete%>
+			</td>
+		</tr>
+	<% end %>
+	</table>	
 <% end %>

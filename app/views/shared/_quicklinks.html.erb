@@ -8,5 +8,10 @@
 		<% end %>
 		<li><%= link_to 'Images', user_images_path(current_user) %></li>
 		<li><%= link_to 'Contacts', user_contacts_path(current_user) %></li>			
+		<% if current_user.blog %>
+		<li><%= link_to 'Blog', user_blogs_path(current_user) %></li>	
+		<% else %>
+		<li><%= link_to 'Blog', new_user_blogs_path(current_user) %></li>
+		<% end %>
 	</ul>
 </nav>

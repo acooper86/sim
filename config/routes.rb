@@ -1,5 +1,17 @@
 Sim::Application.routes.draw do
 
+  get "posts/new"
+
+  get "posts/create"
+
+  get "posts/edit"
+
+  get "posts/update"
+
+  get "posts/destroy"
+
+  get "posts/index"
+
   resources :sessions, :only => [:new, :create, :destroy]
  
   resources :users do
@@ -10,6 +22,10 @@ Sim::Application.routes.draw do
   	resources :images
   	
   	resources :contacts
+  	
+  	resource :blogs do
+  		resources :posts
+  	end
   	
   	resource :websites do
   		member do

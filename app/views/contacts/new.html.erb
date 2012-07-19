@@ -3,6 +3,10 @@
 <%= form_for([@user, @contact]) do |c| %>
 	<%= render 'shared/error_messages', :object => c.object %>
 	<%= c.hidden_field :created_from, :value => "user" %>
+	<%= c.label :ctype, "Type"%>
+	<%= c.radio_button :ctype, "client"%><%= c.label :ctype, "Client"%>
+	<%= c.radio_button :ctype, "business"%><%= c.label :ctype, "Business Contact"%>
+	<%= c.radio_button :ctype, "subscriber"%><%= c.label :ctype, "Subscriber"%>
 	<%= c.label :first_name %>
 	<%= c.text_field :first_name %>	
 	<%= c.label :last_name %>
@@ -26,7 +30,7 @@
 	<%= c.label :business, "Business Name" %>
 	<%= c.text_field :business %>
 	<%= c.label :birth_date %>
-	<%= c.text_field :birth_date %>
+	<%= c.date_select :birth_date, :include_blank=>true, :order=>[:month, :day] %>
 	<%= c.label :email_list%>
 	<%= c.check_box :email_list %>
 	<%= c.submit %>

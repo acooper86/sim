@@ -1,10 +1,12 @@
 require 'digest'
 
 class User < ActiveRecord::Base
-	has_one :website
+	has_one :website, :dependent => :destroy
+	has_one :blog, :dependent => :destroy
+	has_many :post, :through => :blog
 	has_many :page, :through => :website
-	has_many :image
-	has_many :contact
+	has_many :image, :dependent => :destroy
+	has_many :contact, :dependent => :destroy
 
 	attr_accessor :password
 	attr_accessible(:first_name, :last_name, :email, :password, :password_confirmation,:address_l1,

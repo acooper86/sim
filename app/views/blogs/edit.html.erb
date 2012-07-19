@@ -1,0 +1,26 @@
+<h1>Your Blog Settings</h1>
+
+<%= form_for([@user,@blog], :url=>user_blogs_path(@user)) do |b| %>
+	<%= render 'shared/error_messages', :object => b.object %>
+	<%=b.label :title%>
+	<%=b.text_field :title %>
+	<%=b.label :per_page, "Index Length"%>
+	<%=b.text_field :per_page %>
+	<%=b.label :allow_comments%>
+	<%=b.check_box :allow_comments %>
+	<%=b.label :per_comments, "Comments shown"%>
+	<%=b.text_field :per_comments %>
+	<%=b.label :recent%>
+	<%=b.check_box :recent%>
+	<%=b.label :tag_cloud%>
+	<%=b.check_box :tag_cloud %>
+	<%=b.label :categories%>
+	<%=b.check_box :categories %>
+	<%=b.label :archive%>
+	<%=b.check_box :archive %>
+	<%=b.submit %>
+<% end %>
+
+<h2>Delete The Blog</h2>
+<p>Warning:This action will perminently destroy the blog, all associated posts, and all associated comments. Do not do this lightly, as there is nothing support can do to recover your lost data.</p>
+<%= button_to 'Delete Blog', user_blogs_path(@user), :method => :delete%>

@@ -1,0 +1,9 @@
+<div>
+	<h2>Title:<%= @post.title %></td>
+	<h3>Content:</h3>
+	<p><%= @post.content %></p>
+	<p><%= @post.tags %></p>
+	<p><%= @post.categories %></p>
+	<%= link_to 'edit', edit_user_blogs_post_path(@user,@post)%>
+	<%= button_to 'delete', user_blogs_post_path(@user,@post), :method => :delete%>
+</div>

@@ -1,0 +1,23 @@
+<h1>Create a New Blog</h1>
+<p>Yaya! Time to strart making content. First select the settings for your blog.</p>
+
+<%= form_for([@user,@blog]) do |b| %>
+	<%= render 'shared/error_messages', :object => b.object %>
+	<%=b.label :title%>
+	<%=b.text_field :title %>
+	<%=b.label :per_page, "Index Length"%>
+	<%=b.text_field :per_page %>
+	<%=b.label :allow_comments%>
+	<%=b.check_box :allow_comments %>
+	<%=b.label :per_comments, "Comments shown"%>
+	<%=b.text_field :per_comments %>
+	<%=b.label :recent%>
+	<%=b.check_box :recent%>
+	<%=b.label :tag_cloud%>
+	<%=b.check_box :tag_cloud %>
+	<%=b.label :categories%>
+	<%=b.check_box :categories %>
+	<%=b.label :archive%>
+	<%=b.check_box :archive %>
+	<%=b.submit%>
+<% end %>

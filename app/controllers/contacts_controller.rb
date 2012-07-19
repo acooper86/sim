@@ -12,9 +12,6 @@ class ContactsController < ApplicationController
   def create
   	@user = User.find(params[:user_id])
   	@contact = @user.contact.new(params[:contact])
-  	if params[:contact][:birth_date]
-  		@contact.birth_date = Date.new(params[:contact][:birth_date])
-  	end
   	
   	if @contact.save
 		flash[:success] = "Your contact was successfully created."
@@ -47,7 +44,7 @@ class ContactsController < ApplicationController
   def index
   	@title="View all your Contacts"
   	@user = User.find(params[:user_id])
-  	@contacts = @user.contact
+  	@contacts = @user.contact.paginate(:page=>params[:page], :per_page => 10).order('last_name ASC')
   end
 
   def show
