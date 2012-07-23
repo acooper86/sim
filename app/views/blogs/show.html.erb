@@ -1,6 +1,10 @@
 <h1><%= @blog.title %> Dashboard</h1>
 <h2>New Blog Post</h2>
-	<%= link_to "New Post", new_user_blogs_post_path(@user)%>
+	<%= link_to "New Post", new_user_blogs_post_path(@user, :type => "normal")%>
+	<%= link_to "New Quote Post", new_user_blogs_post_path(@user, :type => "block_quote")%>
+	<%= link_to "New Link Post", new_user_blogs_post_path(@user, :type => "link")%>
+	<%= link_to "New Image Post", new_user_blogs_post_path(@user, :type => "image")%>
+	<%= link_to "New Video Post", new_user_blogs_post_path(@user, :type => "video")%>
 <h2>Recent Blog Posts</h2>
 	<%= link_to "View All", user_blogs_posts_path(@user)%>
 	<% if @posts.empty?%>

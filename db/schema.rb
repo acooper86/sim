@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120719162238) do
+ActiveRecord::Schema.define(:version => 20120721024239) do
 
   create_table "blogs", :force => true do |t|
     t.integer  "user_id"
@@ -28,6 +28,12 @@ ActiveRecord::Schema.define(:version => 20120719162238) do
   end
 
   add_index "blogs", ["user_id"], :name => "index_blogs_on_user_id"
+
+  create_table "categories", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "contacts", :force => true do |t|
     t.integer  "user_id"
@@ -75,18 +81,46 @@ ActiveRecord::Schema.define(:version => 20120719162238) do
     t.datetime "updated_at",                       :null => false
   end
 
+  create_table "post_categories", :force => true do |t|
+    t.integer "post_id"
+    t.integer "category_id"
+  end
+
+  add_index "post_categories", ["category_id"], :name => "index_post_categories_on_category_id"
+  add_index "post_categories", ["post_id"], :name => "index_post_categories_on_post_id"
+
+  create_table "post_tags", :id => false, :force => true do |t|
+    t.integer  "tag_id"
+    t.integer  "post_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "post_tags", ["post_id"], :name => "index_post_tags_on_post_id"
+  add_index "post_tags", ["tag_id"], :name => "index_post_tags_on_tag_id"
+
   create_table "posts", :force => true do |t|
     t.integer  "blog_id"
     t.string   "title"
     t.text     "content"
     t.string   "ptype"
-    t.string   "tags"
-    t.string   "categories"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "image"
+    t.string   "block_quote"
+    t.string   "q_author"
+    t.string   "href"
+    t.string   "link_text"
+    t.string   "video"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   add_index "posts", ["blog_id"], :name => "index_posts_on_blog_id"
+
+  create_table "tags", :force => true do |t|
+    t.string   "tag"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "first_name"

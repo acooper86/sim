@@ -1,5 +1,15 @@
 <div>
-	<h2>Title:<%= @post.title %></td>
+	<% if @post.ptype == 'image' %>
+		<%= image_tag @post.image_url %>
+	<% elsif @post.ptype == 'link'%>
+		<%= link_to @post.link_text, @post.href %>
+	<% elsif @post.ptype == 'block_quote' %>
+		<blockquote><%= @post.block_quote %><br/><span class="q_author"><%= @post.q_author%></span></blockquote>
+	<% elsif @post.ptype == 'video' %>
+		<%= @post.video.html_safe %>
+	<% elsif @post.ptype == 'normal'%>
+		<h2>Title:<%= @post.title %></td>
+	<% end %>
 	<h3>Content:</h3>
 	<p><%= @post.content %></p>
 	<p><%= @post.tags %></p>

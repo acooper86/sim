@@ -11,8 +11,8 @@
 			<h2>Title:<%= p.title %></td>
 			<h3>Content:</h3>
 			<p><%= p.content %></p>
-			<p><%= p.tags %></p>
-			<p><%= p.categories %></p>
+			<p><%= p.tag %></p>
+			
 			<%= link_to 'edit', edit_user_blogs_post_path(@user,p)%>
 			<%= link_to 'show', user_blogs_post_path(@user,p)%>
 			<%= button_to 'delete', user_blogs_post_path(@user,p), :method => :delete%>

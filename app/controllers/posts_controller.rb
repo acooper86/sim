@@ -8,6 +8,8 @@ class PostsController < ApplicationController
   	@user = User.find(params[:user_id])
   	@blog = @user.blog
   	@post = @blog.post.new
+  	@post.ptype = params[:type]
+  	3.times { @post.tag.build}
   end
 
   def create
@@ -68,7 +70,7 @@ class PostsController < ApplicationController
 	@title = "View all Posts"
 	@user = User.find(params[:user_id])
   	@blog = @user.blog
-  	@posts = @blog.post.paginate(:page=>params[:page], :per_page => 10)
+  	@posts = @blog.post.paginate(:page=>params[:page], :per_page => 4).order('created_at desc')
   end
   
   private
