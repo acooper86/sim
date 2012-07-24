@@ -25,10 +25,19 @@
 		<%=p.text_field :title %>
 		<%=p.label :content%>
 		<%=p.text_area :content %>	
+		
+		<%= tag_checkboxes @blog %>
 		<%= p.fields_for :tag do |t|%>
 			<%=t.label :tag %>
 			<%=t.text_field :tag %>
 		<% end %>
+		
+		<%= category_select @blog %>
+		<%= p.fields_for :category do |cat|%>
+			<%=cat.label :name, "New Category" %>
+			<%=cat.text_field :name %>
+		<% end %>
+		
 		<%=p.hidden_field :ptype%>	
 		<%=p.submit%>
 <% end %>

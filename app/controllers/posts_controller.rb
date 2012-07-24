@@ -10,6 +10,7 @@ class PostsController < ApplicationController
   	@post = @blog.post.new
   	@post.ptype = params[:type]
   	3.times { @post.tag.build}
+  	@post.category.new
   end
 
   def create
@@ -19,6 +20,14 @@ class PostsController < ApplicationController
   	
   	if @post.save
   		flash[:success]="Post Successfully Created"
+  		if params[:tag]
+  	      @post.post_tags.new(:tag_id => params[:tag]).save
+  	    end
+  	    
+  	    if params[:category]
+  	      @post.post_categories.new(:category_id => params[:category]).save unless params[:category].blank?
+  	    end
+  		
   		redirect_to user_blogs_posts_path(@user)
   	else
   		@title = "Error Creating Post"

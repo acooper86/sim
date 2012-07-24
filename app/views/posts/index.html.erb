@@ -1,6 +1,6 @@
 <h1>Posts for <%= @blog.title%>:</h1>
 
-<%=link_to 'Create A Post', new_user_blogs_post_path(@user) %>
+<%= link_to "New Post", new_user_blogs_post_path(@user, :type => "normal")%>
 
 <% if @posts.empty?%>
 	<h2>No Posts Yet To View. Add a Post first. </h2>
@@ -12,6 +12,7 @@
 			<h3>Content:</h3>
 			<p><%= p.content %></p>
 			<p><%= p.tag %></p>
+			<p><%= p.category %></p>
 			
 			<%= link_to 'edit', edit_user_blogs_post_path(@user,p)%>
 			<%= link_to 'show', user_blogs_post_path(@user,p)%>
