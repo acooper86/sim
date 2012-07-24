@@ -1,5 +1,5 @@
-<h1>Edit Post</h1>
-<%= form_for([@user,@blog,@post],:url => user_blogs_posts_path, :html => {:multipart=>true}) do |p| %>
+<h1>Create a New Post</h1>
+<%= form_for([@user,@blog,@post],:url => user_blogs_post_path, :html => {:multipart=>true}) do |p| %>
 	<%= render 'shared/error_messages', :object => p.object %>
 	<% if @post.ptype == 'image'%>
 		<%= p.label :image%>
@@ -20,17 +20,16 @@
 	<% elsif  @post.ptype == 'video'%>
 		<%=p.label :video, "Full Address"%>
 		<%=p.text_field :video %>
-		<%=p.label :link_text, 'Text'%>
-		<%=p.text_field :link_text %>	
 	<% end %>
 		<%=p.label :title%>
 		<%=p.text_field :title %>
 		<%=p.label :content%>
 		<%=p.text_area :content %>	
-		<%=p.label :tags%>
-		<%=p.text_field :tags %>
-		<%=p.label :categories%>
-		<%=p.text_field :categories %>
+		
+		<%= edit_tag_checkboxes(@blog,@post) %>		
+		
+		<%= edit_category_select(@blog,@post) %>
+		
 		<%=p.hidden_field :ptype%>	
 		<%=p.submit%>
 <% end %>

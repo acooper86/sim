@@ -1,12 +1,12 @@
 class Post < ActiveRecord::Base
   belongs_to :blog
   
-  has_many :post_tags
+  has_many :post_tags, :dependent => :destroy
   has_many :tag, :through => :post_tags
 
   accepts_nested_attributes_for :tag, :reject_if => proc {|attr| attr[:tag].blank?}
 
-  has_many :post_categories
+  has_many :post_categories, :dependent => :destroy
   has_many :category, :through => :post_categories
   
   accepts_nested_attributes_for :category, :reject_if => proc {|attr| attr[:name].blank?}

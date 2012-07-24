@@ -1,6 +1,6 @@
 class CreatePostTags < ActiveRecord::Migration
   def change
-    create_table :post_tags, :id => false do |t|
+    create_table :post_tags do |t|
       t.references :tag
       t.references :post
 

@@ -89,7 +89,7 @@ ActiveRecord::Schema.define(:version => 20120721024239) do
   add_index "post_categories", ["category_id"], :name => "index_post_categories_on_category_id"
   add_index "post_categories", ["post_id"], :name => "index_post_categories_on_post_id"
 
-  create_table "post_tags", :id => false, :force => true do |t|
+  create_table "post_tags", :force => true do |t|
     t.integer  "tag_id"
     t.integer  "post_id"
     t.datetime "created_at", :null => false

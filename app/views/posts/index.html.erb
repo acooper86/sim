@@ -8,11 +8,9 @@
 	<%= will_paginate @posts %>
 	<%@posts.each do |p|%>
 		<div>
-			<h2>Title:<%= p.title %></td>
-			<h3>Content:</h3>
-			<p><%= p.content %></p>
-			<p><%= p.tag %></p>
-			<p><%= p.category %></p>
+			<h2>Title:<%= p.title %></h2>
+			<p>Tags:<%= tag_list(p) %></p>
+			<p>Category:<%= p.category.first.name unless p.category.empty? %></p>
 			
 			<%= link_to 'edit', edit_user_blogs_post_path(@user,p)%>
 			<%= link_to 'show', user_blogs_post_path(@user,p)%>

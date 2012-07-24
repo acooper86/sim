@@ -48,6 +48,36 @@ class PostsController < ApplicationController
   	@post = Post.find(params[:id])
   	
   	if @post.update_attributes(params[:post])
+  		@post.post_tags.destroy_all
+  		
+  		if params[:tag]	  
+  		  params[:tag].each do |t|
+  		    tag = @post.post_tags.create("tag_id"=>t)
+  		  end
+  		end
+  		
+  		unless params[:new_tag].empty?
+  		  params[:new_tag].each do |nt|
+  			unless nt.empty?
+  			  tag = @post.tag.new("tag"=> nt) 
+  			  tag.save
+  			  pt = @post.post_tags.create("tag_id" => tag.id)
+  		    end
+  		  end
+  		end
+  		
+  		unless params[:category].empty?
+  		  @post.post_categories.first.update_attribute('category_id', params[:category])
+  		end
+  		
+  		@post.post_categories.destroy_all
+  		if params[:new_category]	  
+  		  cat = @post.category.new
+  		  cat.name = params[:new_category]
+  		  cat.save
+  		  @post.post_categories.create("category_id"=> cat.id)
+  		end
+  		
   		flash[:success]="Post Successfully Updated"
   		redirect_to user_blogs_posts_path(@user)
   	else
