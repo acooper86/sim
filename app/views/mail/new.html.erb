@@ -1,0 +1,19 @@
+<%= form_for([@user, @dm], :url => user_mail_index_path) do |f| %>
+	<%= render 'shared/error_messages', :object => f.object %>
+	
+	<%= f.label :recipients%>
+	<%= recipient_select(@user) %>
+	
+	<%= f.label :subject %>
+	<%= f.text_field :subject %>
+	
+	<%= f.label :message%>
+	<%= f.text_area :message %>
+	
+	<%= f.label :theme %>
+	<%= f.select :theme, options_for_select([['green','green.css'],['blue','blue.css']]) %>
+	
+	
+	<%= f.submit %>
+	
+<% end %>

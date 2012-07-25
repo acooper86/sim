@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120721024239) do
+ActiveRecord::Schema.define(:version => 20120725015614) do
 
   create_table "blogs", :force => true do |t|
     t.integer  "user_id"
@@ -34,6 +34,19 @@ ActiveRecord::Schema.define(:version => 20120721024239) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "contact_messages", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "subject"
+    t.string   "message"
+    t.string   "theme"
+    t.string   "recipients"
+    t.string   "attachements"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "contact_messages", ["user_id"], :name => "index_contact_messages_on_user_id"
 
   create_table "contacts", :force => true do |t|
     t.integer  "user_id"

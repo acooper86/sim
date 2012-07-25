@@ -1,20 +1,10 @@
 Sim::Application.routes.draw do
 
-  get "posts/new"
-
-  get "posts/create"
-
-  get "posts/edit"
-
-  get "posts/update"
-
-  get "posts/destroy"
-
-  get "posts/index"
-
   resources :sessions, :only => [:new, :create, :destroy]
  
   resources :users do
+  	resources :mail
+  	
   	member do
   		match '/activate', :to => "users#activate"
   	end

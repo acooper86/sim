@@ -1,0 +1,13 @@
+<h1>Index Page </h1>
+<h2>Direct Mail</h2>
+<%= link_to "New Direct Mail", new_user_mail_path(@user)%>
+<table>
+	<% @dm.each do |dm| %>
+		<tr>
+			<td><%= recipients(dm) %></td>
+			<td><%= dm.subject %></td>
+			<td><%= dm.message %></td>
+			<td><%= dm.attachements %></td>		
+		</tr>
+	<% end %>
+</table>
