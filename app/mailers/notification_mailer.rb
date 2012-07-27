@@ -1,4 +1,5 @@
 class NotificationMailer < ActionMailer::Base
+
   default from: "admin@simplissage.com"
   default :to => "fluke.a@gmail.com"
   

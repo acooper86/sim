@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
 	else
 		if user.activated == "t"
 			sign_in(user,params[:session][:permanent])
-			redirect_back_or dashboard_path
+			redirect_back_or dashboard_user_path(user)
 		else
 			flash.now[:error] = "The Account you are trying to access has not been activated. Please check any spam filters for lost emails."
   			@title = "Sign in"

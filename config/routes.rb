@@ -3,11 +3,15 @@ Sim::Application.routes.draw do
   resources :sessions, :only => [:new, :create, :destroy]
  
   resources :users do
-  	resources :mail
   	
   	member do
   		match '/activate', :to => "users#activate"
+  	    match '/mail', :to => "users#mail"
+  	    match '/dashboard', :to => "users#dashboard"
+  	    match '/support', :to => "users#support"
   	end
+  	
+  	resources :direct_mail
   	
   	resources :images
   	
@@ -31,6 +35,8 @@ Sim::Application.routes.draw do
 
   root :to => "statics#home"
   
+  match '/signup', :to => "users#new"
+  
   match '/about', :to => "statics#about"
   
   match '/affliate', :to => "statics#affliate"
@@ -38,12 +44,6 @@ Sim::Application.routes.draw do
   match 'contact' => "contact#new", :as => 'contact', :via => :get
   
   match 'contact' => "contact#create", :as => 'contact', :via => :post
-  
-  match '/dashboard', :to => "users#dashboard"
-  
-  match '/signup', :to => "users#new"
-  
-  match '/support', :to => "users#support"
   
   match '/signin', :to => "sessions#new"
   

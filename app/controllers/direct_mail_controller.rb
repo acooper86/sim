@@ -1,11 +1,10 @@
-class MailController < ApplicationController
-  
+class DirectMailController < ApplicationController
   layout "logged"
   
   def index
-    @title = "View All Mail"
+    @title = "View All Direct Mail"
     @user = User.find(params[:user_id])
-    @dm = @user.contact_message
+    @dm = @user.contact_message.paginate(:page=>params[:page], :per_page => 15).order('created_at DESC')
   end
   
   def new
@@ -37,5 +36,4 @@ class MailController < ApplicationController
     	render 'new'
     end
   end
-
 end

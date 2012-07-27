@@ -1,0 +1,17 @@
+<h1>Direct Mail</h1>
+<%= link_to "New Direct Mail", new_user_direct_mail_path(@user)%>
+<%= will_paginate @dm %>
+<table>
+  <th>To:</th>
+  <th>Subject:</th>
+  <th>Sent On:</th>
+  <th>Attachements:</th>
+	<% @dm.each do |dm| %>
+		<tr>
+			<td><%= recipients(dm) %></td>
+			<td><%= dm.subject %></td>
+			<td><%= dm.created_at %></td>
+			<td><%= dm.attachements %></td>		
+		</tr>
+	<% end %>
+</table>

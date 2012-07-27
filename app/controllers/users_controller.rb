@@ -76,6 +76,12 @@ class UsersController < ApplicationController
   	end
   end
   
+  def mail
+    @title = "View All Mail"
+    @user = User.find(params[:id])
+    @dm = @user.contact_message.paginate(:page=>params[:page], :per_page => 15).order('created_at DESC')
+  end
+  
   private
   	def authenticate
   		deny_access unless signed_in?

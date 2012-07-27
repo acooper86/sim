@@ -20,7 +20,7 @@ module SessionsHelper
 	
 	def forward_check
 		if signed_in?
-			redirect_to dashboard_path
+			redirect_to dashboard_user_path(current_user)
 		end
 	end
 	

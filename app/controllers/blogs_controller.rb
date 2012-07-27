@@ -53,7 +53,7 @@ class BlogsController < ApplicationController
   	@blog= @user.blog
   	@blog.destroy
   	flash[:success] = "Blog and all posts Deleted"
-  	redirect_to dashboard_path
+  	redirect_to dashboard_user_path(@user)
   end
   
   private

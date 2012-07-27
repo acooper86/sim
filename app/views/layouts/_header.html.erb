@@ -7,9 +7,9 @@
 <nav>
 	<ul>
 		<% if signed_in? %>
-		<li><%= link_to "Home", dashboard_path %></li>
+		<li><%= link_to "Home", dashboard_user_path(@user) %></li>
 		<li><%= link_to "Settings", current_user %></li>
-		<li><%= link_to "Support", support_path  %></li>
+		<li><%= link_to "Support", support_user_path(@user)  %></li>
 		<li><%= link_to "Sign out", signout_path, :method => :delete %></li>
 		<% else %>
 		<li><%= link_to "Home", root_path %></li>
