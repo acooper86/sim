@@ -44,15 +44,6 @@ module MailHelper
   	return list 
   end
   
-  def from_message(user)
-    from = ""
-    from = "This message is from " << @user.first_name << " " << @user.last_name << " of " << @user.business
-  end
-  
-  def from_city_state(user)
-    from = @user.city << ", " << @user.state << " " << @user.zip 
-  end
-  
   def theme(theme_name)
     case theme_name
       when 'green' 

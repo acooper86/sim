@@ -10,6 +10,11 @@
 	<%= f.label :message%>
 	<%= f.text_area :message %>
 	
+	<p>
+      <%= f.file_field :attachements %>
+    </p>
+
+	
 	<%= f.label :theme %>
 	<%= f.select :theme, options_for_select([['green','green'],['grey','grey']]) %>
 	

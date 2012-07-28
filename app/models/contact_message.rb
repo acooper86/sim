@@ -5,6 +5,8 @@ class ContactMessage < ActiveRecord::Base
   
   serialize :recipients, Array
 
+  mount_uploader :attachements, AttachementUploader
+
   def send_message(user)
   	self.recipients.each do |rec|
   	  unless rec.include?("@")

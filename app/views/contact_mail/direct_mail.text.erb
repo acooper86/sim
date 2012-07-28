@@ -3,10 +3,10 @@
 ============================================================
 <%= @contact_message.message.html_safe.gsub(/<\/?[^><]*>/i, "") %>
 ============================================================
-This message is from <%= @user.first_name << " " << @user.last_name << " of " << @user.business%>
+This message is from <%= @user.first_name + " " + @user.last_name %> of <%= @user.business %>
 Please reply to <%= @user.email %>
 <%= @user.telephone %>
 <%= @user.address_l1%>
 <%= @user.address_l2 unless @user.address_l2.blank?%>
-<%= @user.city << ", " << @user.state << " " << @user.zip %>
+<%= @user.city %>, <%= @user.state %> <%= @user.zip %>
 <%= @user.website.domain %>
