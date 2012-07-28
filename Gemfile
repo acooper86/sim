@@ -10,7 +10,7 @@ gem 'therubyracer'
 
 gem 'uglifier'
 
-gem 'rmagick'
+gem 'rmagick', '2.12.2'
 
 gem 'carrierwave'
 
