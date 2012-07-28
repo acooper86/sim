@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
 	has_many :image, :dependent => :destroy
 	has_many :contact, :dependent => :destroy
 	has_many :contact_message, :dependent => :destroy
+	has_many :news_message, :dependent => :destroy
 
 	attr_accessor :password
 	attr_accessible(:first_name, :last_name, :email, :password, :password_confirmation,:address_l1,

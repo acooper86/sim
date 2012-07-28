@@ -2,12 +2,12 @@
             <tr>
               <td width="<%=vars[:footer_wrap_width] %>" bgcolor="<%= vars[:footer_wrap_bgcolor]%>" style="<%= vars[:footer_wrap_style] %>">
                 <footer>
-                  <p>This message is from <%= @user.first_name << " " << @user.last_name << " of " << @user.business%></p>
+                  <p>This message is from <%= @user.first_name %> <%= @user.last_name %> of <%= @user.business %></p>
                   <p>Please reply to <%= @user.email %></p>
                   <p><%= @user.telephone %></p>
                   <p><%= @user.address_l1%></p>
                   <p><%= @user.address_l2 unless @user.address_l2.blank?%></p>
-                  <p><%= @user.city << ", " << @user.state << " " << @user.zip %></p>
+                  <p><%= from_city_state(@user) %></p>
                   <p><%= @user.website.domain %></p>
                 </footer>
               </td>

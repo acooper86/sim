@@ -1,10 +1,47 @@
 <% vars = theme(@theme) %>
 <DOCTYPE! html>
   <body>
-    <%= render 'mail_top' %>
+    <table id="back" width="100%" bgcolor="<%= vars[:back_bgcolor] %>" style="<%= vars[:back_border] %>">
+      <tr>
+        <td align="center">
+          <table id="body_wrap" cellspacing="<%= vars[:body_wrap_cellspacing] %>" cellpadding="<%= vars[:body_wrap_cellpadding] %>">
+            <tr>
+              <td>
+                <table id="head" cellspacing="<%= vars[:head_cellspacing] %>" cellpadding="<%= vars[:head_cellpadding] %>" style="<%= vars[:head_text_align] %>">
+                  <tr>
+                    <td id="logo_wrap" width="<%= vars[:logo_wrap_width]%>">
+                      <% logo = @user.image.where(:logo => true)%>
+            	      <img src="http://localhost:3000<%= logo[0].image_url %>" width="<%= vars[:logo_image_width] %>"/>
+                    </td>
+                    <td id = "hgroup_wrap" width="<%= vars[:hgroup_wrap_width] %>">
+                      <hgroup style="<%= vars[:hgroup_color] %><%= vars[:hrgoup_font] %>">
+                        <h1 style="<%= vars[:hgroup_h1_font_style] << vars[:hgroup_h1_font_size] << vars[:hgroup_h1_margin_bottom] %>"><%= @user.website.title %></h1>
+                        <h2 style="<%= vars[:hgroup_h2_font_style] << vars[:hgroup_h2_font_size] << vars[:hgroup_h2_margin_bottom] %>"><%= @user.website.motto %></h2> 
+                      </hgroup>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
             <tr>
               <td width="<%= vars[:content_wrap_width]%>" bgcolor="<%= vars[:content_wrap_bgcolor] %>" style="<%= vars[:content_wrap_style] %>"><p><%= @contact_message.message.html_safe %></p><td>
             </tr>
-    <%= render 'mail_bottom' %>        
+            <tr>
+              <td width="<%=vars[:footer_wrap_width] %>" bgcolor="<%= vars[:footer_wrap_bgcolor]%>" style="<%= vars[:footer_wrap_style] %>">
+                <footer>
+                  <p>This message is from <%= @user.first_name + @user.last_name %> of <%= @user.business %></p>
+                  <p>Please reply to <%= @user.email %></p>
+                  <p><%= @user.telephone %></p>
+                  <p><%= @user.address_l1%></p>
+                  <p><%= @user.address_l2 unless @user.address_l2.blank?%></p>
+                  <p><%= from_city_state(@user) %></p>
+                  <p><%= @user.website.domain %></p>
+                </footer>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>       
   </body>
 </html>

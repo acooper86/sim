@@ -13,6 +13,8 @@ Sim::Application.routes.draw do
   	
   	resources :direct_mail
   	
+  	resources :news_mail
+  	
   	resources :images
   	
   	resources :contacts

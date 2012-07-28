@@ -1,0 +1,25 @@
+<%= form_for([@user, @nm], :url => user_news_mail_index_path) do |f| %>
+	<%= render 'shared/error_messages', :object => f.object %>
+	<h3>Which lists do you want your campaign sent to?</h3>
+	<%= f.label :clients%>
+	<%= f.select :clients, options_for_select([["Yes", true], ["No", false]]) %>
+	
+	<%= f.label :subscribers%>
+	<%= f.select :subscribers, options_for_select([["Yes", true], ["No", false]]) %>
+	
+	<%= f.label :business, "Business Contacts"%>
+	<%= f.select :business, options_for_select([["Yes", true], ["No", false]]) %>
+	
+	<%= f.label :title, "Campaign Title" %>
+	<%= f.text_field :title %>
+	
+	<%= f.label :message%>
+	<%= f.text_area :message %>
+	
+	<%= f.label :theme %>
+	<%= f.select :theme, options_for_select([['green','green'],['grey','grey']]) %>
+	
+	
+	<%= f.submit %>
+	
+<% end %>

@@ -15,3 +15,20 @@
 		</tr>
 	<% end %>
 </table>
+
+<h1>Campaign Mail</h1>
+<%= link_to "New Campaign", new_user_news_mail_path(@user) %>
+<%= will_paginate @nm %>
+<table>
+  <th>Sent On:</th>
+  <th>To:</th>
+  <th>Title:</th>
+
+  <% @nm.each do |nm| %>
+    <tr>
+      <td><%= nm.created_at %></td>
+	  <td><%= news_lists(nm) %></td>
+	  <td><%= nm.title %></td>	
+    </tr>
+  <% end %>
+</table>

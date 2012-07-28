@@ -36,6 +36,23 @@ module MailHelper
     return recs
   end
   
+  def news_lists(news_message)
+  	list = ""
+  	list << "Clients " if news_message.clients
+  	list << "Subscribers " if news_message.subscribers
+  	list << "Business Contacts" if news_message.business
+  	return list 
+  end
+  
+  def from_message(user)
+    from = ""
+    from = "This message is from " << @user.first_name << " " << @user.last_name << " of " << @user.business
+  end
+  
+  def from_city_state(user)
+    from = @user.city << ", " << @user.state << " " << @user.zip 
+  end
+  
   def theme(theme_name)
     case theme_name
       when 'green' 

@@ -26,10 +26,10 @@ class DirectMailController < ApplicationController
     if dm.save
     	if dm.send_message(@user)
     	  flash[:success] = "Message Sent"
-    	  redirect_to user_mail_index_path
+    	  redirect_to mail_user_path(@user)
     	else
     	  flash[:notice] = "The message was saved but not sent."
-    	  redirect_to user_mail_index_path
+    	  redirect_to mail_user_path(@user)
     	end
     else
     	@title = "There was a problem creating your email."

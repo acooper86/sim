@@ -14,6 +14,8 @@ gem 'rmagick'
 
 gem 'carrierwave'
 
+gem 'mysql2'
+
 group :development do
 	gem 'rspec-rails'
 	gem 'sqlite3'
@@ -25,6 +27,5 @@ group :test do
 end
 
 group :production do
-	gem 'mysql2'
 	gem 'unicorn'
 end

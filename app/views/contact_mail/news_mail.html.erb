@@ -1,0 +1,10 @@
+<% vars = theme(@theme) %>
+<DOCTYPE! html>
+  <body>
+    <%= render 'mail_top' %>
+            <tr>
+              <td width="<%= vars[:content_wrap_width]%>" bgcolor="<%= vars[:content_wrap_bgcolor] %>" style="<%= vars[:content_wrap_style] %>"><p><%= @contact_message.message.html_safe %></p><td>
+            </tr>
+    <%= render 'mail_bottom' %>        
+  </body>
+</html>
