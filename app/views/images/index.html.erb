@@ -5,12 +5,12 @@
 	<h2>Logo Picture</h2>
 	<p>A logo picture should be small, no more than 200 pixels by 200 pixels.</p>
 	<% logo = @user.image.where(:logo => true)%>
-	<%= image_tag logo[0].image_url(:thumb)%>
+	<%= image_tag logo[0].image_url(:thumb) if logo[0]%>
 	<hr/>
 	<h2>Logo Picture</h2>
 	<p>A logo picture should be medium sized, around 400 pixels by 500 pixels.</p>
 	<% profile = @user.image.where(:profile => true)%>
-	<%= image_tag profile[0].image_url(:thumb)%>
+	<%= image_tag profile[0].image_url(:thumb) if profile[0]%>
 	<hr/>
 </div>
 	

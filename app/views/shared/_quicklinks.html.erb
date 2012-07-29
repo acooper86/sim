@@ -1,6 +1,6 @@
 <nav id="quicklinks">
 	<ul>
-		<li><%= link_to 'Dashboard', dashboard_user_path(current_user) %></li>
+		<li><%= link_to 'Dashboard', dashboard_path %></li>
 		<% if current_user.website %>
 		<li><%= link_to 'Website', edit_user_websites_path(current_user, current_user.website) %></li>	
 		<% else %>

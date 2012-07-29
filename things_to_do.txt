@@ -26,12 +26,7 @@ create the schedule resource
 finish the publish function including the folder making, integration of page types/ajax
 
 ////current
-starting on the contacts manager functionality
-major steps left:
-	model
-	route
-	controller
-	views
+change host
 
 //thoughts for v 2
 -adapt the editor to allow for the differences between browsers and adv. mozilla use.

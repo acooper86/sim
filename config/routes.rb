@@ -7,7 +7,6 @@ Sim::Application.routes.draw do
   	member do
   		match '/activate', :to => "users#activate"
   	    match '/mail', :to => "users#mail"
-  	    match '/dashboard', :to => "users#dashboard"
   	    match '/support', :to => "users#support"
   	end
   	
@@ -38,6 +37,8 @@ Sim::Application.routes.draw do
   root :to => "statics#home"
   
   match '/signup', :to => "users#new"
+  
+  match '/dashboard', :to => "users#dashboard"
   
   match '/about', :to => "statics#about"
   
