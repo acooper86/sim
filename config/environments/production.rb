@@ -66,7 +66,7 @@ Sim::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
   
-  ActionMailer::Base.smtp_settings = {
+  config.action_mailer.smtp_settings = {
   :address              => "smtp.gmail.com",
   :port                 => 587,
   :domain               => "simplissage.com",
@@ -76,5 +76,6 @@ Sim::Application.configure do
   :enable_starttls_auto => true
   }
 
-  ActionMailer::Base.default_url_options[:host] = "simplissage.com"
+  config.action_mailer.default_url_options = { :host => 'massage-website.com' }
+
 end
