@@ -1,0 +1,119 @@
+<h1>Schedule Settings</h1>
+<p>These settings will be used to govern the behavoir of your schedule. It can be updated at any time by going to Schedule > Settings.</p>
+
+<%= form_for([@user,@schedule], :url => user_schedules_path(@schedule)) do |s| %>
+  <%= render 'shared/error_messages', :object => s.object %>
+  <table>
+    <th>Day</th>
+    <th>Start</th>
+    <th>End</th>
+    <th>Second Start </th>
+    <th>Second End</th>
+    <tr>
+	  <td><%= label_tag  "Monday" %></td>
+      <td><%= time_html('monday', false, 'start')%></td>
+      <td><%= time_html('monday', false, 'end')%></td>
+      <td><%= time_html('monday', true, 'start')%></td>
+      <td><%= time_html('monday', true, 'end')%></td>
+    </tr>
+    <tr>
+      <td><%= label_tag  "Tuesday" %></td>
+      <td><%= time_html('tuesday', false, 'start')%></td>
+      <td><%= time_html('tuesday', false, 'end')%></td>
+      <td><%= time_html('tuesday', true, 'start')%></td>
+      <td><%= time_html('tuesday', true, 'end')%></td>
+    </tr>
+    <tr>
+      <td><%= label_tag  "Wedesday Start" %>
+	  <td><%= time_html('wednesday', false, 'start')%></td>
+	  <td><%= time_html('wednesday', false, 'end')%></td>
+	  <td><%= time_html('wednesday', true, 'start')%></td>
+	  <td><%= time_html('wednesday', true, 'end')%></td>
+	</tr>
+    <tr>
+      <td><%= label_tag  "Thursday Start" %>
+	  <td><%= time_html('thursday', false, 'start')%></td>
+	  <td><%= time_html('thursday', false, 'end')%></td>
+	  <td><%= time_html('thursday', true, 'start')%></td>
+	  <td><%= time_html('thursday', true, 'end')%></td>
+	</tr>
+	<tr>
+      <td><%= label_tag  "Friday Start" %></td>
+	  <td><%= time_html('Friday', false, 'start')%></td>
+	  <td><%= time_html('friday', false, 'end')%></td>
+	  <td><%= time_html('friday', true, 'start')%></td>
+	  <td><%= time_html('friday', true, 'end')%></td>
+    </tr>
+    <tr>
+      <td><%= label_tag  "Saterday Start" %></td>
+      <td><%= time_html('saterday', false, 'start')%></td>
+      <td><%= time_html('saterday', false, 'end')%></td>
+      <td><%= time_html('saterday', true, 'start')%></td>
+      <td><%= time_html('saterday', true, 'end')%></td>
+    </tr>
+    <tr>
+      <td><%= label_tag  "Sunday Start" %></td>
+      <td><%= time_html('sunday', false, 'start')%></td>
+	  <td><%= time_html('sunday', false, 'end')%></td>
+	  <td><%= time_html('sunday', true, 'start')%></td>
+	  <td><%= time_html('sunday', true, 'end')%></td>
+	</tr>
+  </table>
+	
+  <%=s.label :padding, "Padding time automatically added between services."%>
+  <%=s.select :padding, [['None', 0],['5 Min.', 5],['10 Min.', 10], ['15 Min.', 15],['20 Min.', 20],['30 Min.', 30],['1 Hr.', 60],['2 HR.', 120]]  %>
+	
+  <%=s.label :online, "Allow online appointment scheduling"%>
+  <%=s.select :online, [['Yes', true],['No',false]]  %>
+	
+  <%=s.label :contact_only, "Allow only contacts to schedule"%>
+  <%=s.select :contact_only, [['Yes', true],['No',false]]  %>
+	
+  <%=s.label :user_email, "Send you emails when a new appointment is created"%>
+  <%=s.select :user_email, [['Yes', true],['No',false]]  %>
+	
+  <%=s.label :contact_email, "Send a confirmation email to the client when appointment is created"%>
+  <%=s.select :contact_email, [['Yes', true],['No',false]]  %>
+	
+  <%=s.label :confirmation, "Confirmation Message"%>
+  <%=s.text_area :confirmation %>
+	
+  <%=s.label :send_reminder, "Send a reminder email to the client before the massage"%>
+  <%=s.select :send_reminder, [['No', 0],['10 Min.', 10],['30 Min.', 30],['1 Hr.', 60],['2 HR.', 120],['5 Hr.', 300],['12 HR.', 720],['1 Day', 1440],['2 Days', 2880],['5 Days', 7200]]  %>
+	
+  <%=s.label :reminder, "Reminder Message"%>
+  <%=s.text_area :reminder %>
+	
+  <%=s.label :cap_name, "Capture contact name when creating online appointment"%>
+  <%=s.select :cap_name, [['Yes', true],['No',false]]  %>
+	
+  <%=s.label :cap_email, "Capture contact email when creating online appointment"%>
+  <%=s.select :cap_email, [['Yes', true],['No',false]]  %>
+	
+  <%=s.label :cap_phone, "Capture contact phone number when creating online appointment"%>
+  <%=s.select :cap_phone, [['Yes', true],['No',false]]  %>
+	
+  <%=s.label :cap_address, "Capture contact phone number when creating online appointment"%>
+  <%=s.select :cap_address, [['Yes', true],['No',false]]  %>
+	
+  <h3>Locations available:</h3>
+  <%=s.label :outcall, "In-home or at business"%>
+  <%=s.select :outcall, [['Yes', true],['No',false]]  %>
+	
+  <%=s.label :office, "At Office or Home Office"%>
+  <%=s.select :office, [['Yes', true],['No',false]]  %>
+	
+  <%=s.label :office_location %>
+  <%=s.text_field :office_location %>
+	
+  <%=s.label :cancellation, "Allow Contacts to Cancel Appointments"%>
+  <%=s.select :cancellation, [['Yes', true],['No',false]]  %>
+	
+  <%=s.label :cancellation_time, "Time before appointment that a user can cancel"%>
+  <%=s.select :cancellation_time, [['Any', 0],['10 Min.', 10],['30 Min.', 30],['1 Hr.', 60],['2 HR.', 120],['5 Hr.', 300],['12 HR.', 720],['1 Day', 1440],['2 Days', 2880],['5 Days', 7200]]  %>
+	
+  <%=s.label :cancellation_policy, "Cancellation Policy"%>
+  <%=s.text_area :cancellation_policy %>
+	
+  <%=s.submit%>
+<% end %>

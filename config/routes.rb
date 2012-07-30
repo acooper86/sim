@@ -28,6 +28,8 @@ Sim::Application.routes.draw do
   		end
   		resources :pages 
   	end
+  	
+  	resource :schedules
   end
   
   resources :password_resets

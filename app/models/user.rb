@@ -2,9 +2,13 @@ require 'digest'
 
 class User < ActiveRecord::Base
 	has_one :website, :dependent => :destroy
+	has_many :page, :through => :website
+	
 	has_one :blog, :dependent => :destroy
 	has_many :post, :through => :blog
-	has_many :page, :through => :website
+	
+	has_one :schedule, :dependent => :destroy
+	
 	has_many :image, :dependent => :destroy
 	has_many :contact, :dependent => :destroy
 	has_many :contact_message, :dependent => :destroy

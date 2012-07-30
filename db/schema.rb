@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120727201041) do
+ActiveRecord::Schema.define(:version => 20120729210942) do
 
   create_table "blogs", :force => true do |t|
     t.integer  "user_id"
@@ -143,6 +143,33 @@ ActiveRecord::Schema.define(:version => 20120727201041) do
   end
 
   add_index "posts", ["blog_id"], :name => "index_posts_on_blog_id"
+
+  create_table "schedules", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "schedule"
+    t.integer  "padding"
+    t.boolean  "online"
+    t.boolean  "contact_only"
+    t.boolean  "user_email"
+    t.boolean  "contact_email"
+    t.string   "confirmation"
+    t.integer  "send_reminder"
+    t.string   "reminder"
+    t.boolean  "cap_name"
+    t.boolean  "cap_email"
+    t.boolean  "cap_phone"
+    t.boolean  "cap_address"
+    t.boolean  "outcall"
+    t.boolean  "office"
+    t.string   "office_location"
+    t.boolean  "cancellation"
+    t.integer  "cancellation_time"
+    t.string   "cancellation_policy"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
+
+  add_index "schedules", ["user_id"], :name => "index_schedules_on_user_id"
 
   create_table "tags", :force => true do |t|
     t.string   "tag"
