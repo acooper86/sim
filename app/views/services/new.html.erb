@@ -1,0 +1,42 @@
+<h1>Create a New Service</h1>
+<%= form_for([@user,@service]) do |s| %>
+  <%= render 'shared/error_messages', :object => s.object %>
+	<%= s.label :name %>
+	<%= s.text_field :name %>
+	
+	<%= s.label :description %>
+	<%= s.text_area :description %>
+	
+	<%= s.label :main, "Add-on service?"%>
+	<%= s.select :main, [["No", true],["Yes", false]] %>
+	
+	<h3>Available on:</h3>
+	<%= available_main_services_select(@user) %>
+	
+	<table>
+	<th>Time</th>
+	<th>Cost</th>
+	<tr>
+	  <td><%= new_avail_time %></td>
+	  <td><%= new_avail_cost %></td>
+	</tr>
+	<tr>
+	  <td><%= new_avail_time %></td>
+	  <td><%= new_avail_cost %></td>
+	</tr>
+	<tr>
+	  <td><%= new_avail_time %></td>
+	  <td><%= new_avail_cost %></td>
+	</tr>
+	<tr>
+	  <td><%= new_avail_time %></td>
+	  <td><%= new_avail_cost %></td>
+	</tr>
+	<tr>
+	  <td><%= new_avail_time %></td>
+	  <td><%= new_avail_cost %></td>
+	</tr>
+	</table>
+	
+  <%=s.submit%>
+<% end %>

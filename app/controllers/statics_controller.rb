@@ -3,6 +3,7 @@ class StaticsController < ApplicationController
   def home
   	forward_check
   	@title = "Home"
+  	@user = User.new
   end
 
   def about

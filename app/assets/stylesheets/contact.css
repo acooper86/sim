@@ -1,3 +1,61 @@
-form.new_message {
-	border:1px solid #000;
+#form {
+  width: 35%;
 }
+
+#form h1{
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  font-size:1.6em;
+  margin: 10px;
+}
+
+#form p{
+  font-size: 1.1em;
+  font-family: "Palatino Linotype", "Book Antiqua3", Palatino, serif;
+  font-style:italic;
+  margin: 0px 10px 10px 10px;
+  }
+
+#contact_content {
+  float:right;
+  width:53%;
+  margin-right: -100px;
+  margin-top:10px;
+}
+
+#contact_content h1 {
+  font-size: 1.5em;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  margin-bottom: .5em;
+}
+
+#contact_content p {
+  font-size: 1.2em;
+  font-family: "Palatino Linotype", "Book Antiqua3", Palatino, serif;
+}  
+
+#contact_content blockquote {
+  width:200px;
+  font-size: 1.3em;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  float:right;
+  background:rgba(255, 255, 100, .7);
+  padding: 10px;
+  margin:5px 5px 5px 5px;
+}
+
+#form form {
+  margin:0px 10px 10px 10px;
+}
+
+#form form .field {
+  margin: 0px 0px 10px 0px;
+}
+
+#form form .field input {
+  margin: 0px 0px 0px 12px;
+}
+
+#form form .field input#message_subject {
+  margin: 0px 0px 0px 3px;
+  }
+  

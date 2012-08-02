@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120729210942) do
+ActiveRecord::Schema.define(:version => 20120731155222) do
 
   create_table "blogs", :force => true do |t|
     t.integer  "user_id"
@@ -144,6 +144,16 @@ ActiveRecord::Schema.define(:version => 20120729210942) do
 
   add_index "posts", ["blog_id"], :name => "index_posts_on_blog_id"
 
+  create_table "prerequisite_relationships", :force => true do |t|
+    t.integer  "main_id"
+    t.integer  "service_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "prerequisite_relationships", ["main_id"], :name => "index_prerequisite_relationships_on_main_id"
+  add_index "prerequisite_relationships", ["service_id"], :name => "index_prerequisite_relationships_on_service_id"
+
   create_table "schedules", :force => true do |t|
     t.integer  "user_id"
     t.string   "schedule"
@@ -170,6 +180,18 @@ ActiveRecord::Schema.define(:version => 20120729210942) do
   end
 
   add_index "schedules", ["user_id"], :name => "index_schedules_on_user_id"
+
+  create_table "services", :force => true do |t|
+    t.integer  "user_id"
+    t.boolean  "main"
+    t.string   "name"
+    t.string   "description"
+    t.string   "available"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "services", ["user_id"], :name => "index_services_on_user_id"
 
   create_table "tags", :force => true do |t|
     t.string   "tag"

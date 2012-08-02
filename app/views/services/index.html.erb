@@ -1,0 +1,25 @@
+<h1>Service available for <%= @user.first_name + " " + @user.last_name%>:</h1>
+
+<%= link_to "Create a new service", new_user_service_path(@user)%>
+
+<% if @services.empty?%>
+	<h2>No Services Yet To View. Add a service first. </h2>
+<% else %>
+	<%@services.each do |s|%>
+		<div>
+			<h2>Name:<%= s.name %></h2>
+			<p>Description:<%= s.description %></p>
+			<p>Available times:</p>
+			<p>Prerequisites:
+			<% if s.prerequisites%>
+			  <% s.prerequisites.each do |pre| %>
+			  <%= pre.name + " " unless pre.name.blank? %>
+			  <% end %>
+			<% end %></p>
+			
+			<%= link_to 'edit', edit_user_service_path(@user,s)%>
+			<%= link_to 'show', user_service_path(@user,s)%>
+			<%= button_to 'delete', user_service_path(@user,s), :method => :delete%>
+		</div>
+	<% end %>	
+<% end %>

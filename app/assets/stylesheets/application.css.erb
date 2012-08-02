@@ -2,6 +2,7 @@
 *= require reset
 *= require_self
 *= require jquery-ui-1.8.21.custom.css
+*= require contact
 */
 
 html, body {
@@ -22,7 +23,7 @@ html, body {
 }
 
 body {
-	background: url(<%= asset_path 'stripe.png' %>);
+	background: url(<%= asset_path 'stripe_green.png' %>);
 }
 
 /*---- Header styles for who app */
@@ -32,9 +33,9 @@ header {
 }
 
 header img {
-	margin: 5px 5px;
+	margin: 5px 5px 0px 5px;
 	float:left;
-	height:50px;
+	height:60px;
 }
 header hgroup{
 	margin: 0px 0px 0px 60px;
@@ -198,4 +199,42 @@ footer nav ul li a {
 footer nav ul li a:hover {
 	color: rgb(255,255,145);
 	text-decoration: underline;
+}
+
+
+/*------About Us Page -----------*/
+#about {
+  padding: 10px;
+}
+
+#about h1 {
+  font-size: 1.5em;
+  margin: .5em 0em;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+#about p {
+  font-size: 1.1em;
+  margin: .2em;
+   font-family: "Palatino Linotype", "Book Antiqua3", Palatino, serif;
+}
+
+#about ul {
+  list-style:square inside url(<%= asset_path 'orange_square.png' %>);
+  font-family: "Palatino Linotype", "Book Antiqua3", Palatino, serif;
+}
+
+#about blockquote {
+  width:200px;
+  font-size: 1.3em;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  float:right;
+  background:rgba(255, 255, 100, .7);
+  padding: 10px;
+  margin:5px 5px 5px 5px;
+}
+
+#about img {
+  float:left;
+  margin-right: 10px;
 }

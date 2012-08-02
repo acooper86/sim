@@ -1,7 +1,7 @@
 <h1>Schedule Settings</h1>
 <p>These settings will be used to govern the behavoir of your schedule. It can be updated at any time by going to Schedule > Settings.</p>
 
-<%= form_for([@user,@schedule], :url => user_schedules_path(@schedule)) do |s| %>
+<%= form_for([@user,@schedule], :url => user_schedules_path(@user)) do |s| %>
   <%= render 'shared/error_messages', :object => s.object %>
   <table>
     <th>Day</th>

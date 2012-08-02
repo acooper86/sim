@@ -32,7 +32,7 @@ module PostsHelper
     
     tag_checks = ""
     tags.each do |t|
-          tag_checks << check_box_tag('tag', t.id) 
+          tag_checks << check_box_tag('tag[]', t.id) 
           tag_checks << label_tag('tag', t.tag)
     end
     
