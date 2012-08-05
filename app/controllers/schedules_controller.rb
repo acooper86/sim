@@ -52,6 +52,19 @@ class SchedulesController < ApplicationController
     @title = "Your schedule"
 	@user = User.find(params[:user_id])
 	@schedule = @user.schedule
+	Time.zone = @user.schedule.timezone || "Central Time (US & Canada)" 
+	
+	if params[:time]
+	  @time = Time.parse(params[:time])
+	else
+	  @time = Time.now
+	end
+	
+	if params[:view]
+	  @view = params[:view]
+	else
+	  @view = "month"
+	end
   end
 	
   def destroy

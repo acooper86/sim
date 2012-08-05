@@ -82,7 +82,7 @@ class PostsController < ApplicationController
   		redirect_to user_blogs_posts_path(@user)
   	else
   		@title = "Error Updating Post"
-  		render 'new'
+  		render 'edit'
   	end
   end
 

@@ -4,6 +4,7 @@ class StaticsController < ApplicationController
   	forward_check
   	@title = "Home"
   	@user = User.new
+  	@environment = request.env
   end
 
   def about

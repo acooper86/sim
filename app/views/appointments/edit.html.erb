@@ -1,0 +1,23 @@
+<h1>Create a New Appointment</h1>
+<%= form_for([@user,@appointment]) do |a| %>
+  <%= render 'shared/error_messages', :object => a.object %>
+	
+	<%= a.label :contact_id, "Client" %>
+	<%= a.select :contact_id, contact_options(@user)%>
+	
+	<%= a.label :start %>
+	<%= datetime_select(:appointment, :start, :ampm => true, :default => @appointment.start) %>
+		
+	<%= a.label :duration %>
+	<%= a.select :duration, [["5 min.", 5],["10 min.", 10],["15 min.", 15],["20 min.", 20],["25 min.", 25],["30 min.", 30],["35 min.", 35],["40 min.", 40],["45 min.", 45],["50 min.", 50],["55 min.", 55],["1 hr.", 60],["1 hr. 15 min.", 75], ["1 hr. 30 min.", 90],["1 hr. 45 min.", 105],["2 hr.", 120],["2 hr. 30 min.",150],["3 hr.",180],["4 hr.",240],["5 hr.",300],["6 hr.",360],["7 hr.",420],["8 hr.",480]] %>
+	
+	<%= a.label :location %>
+	<%= a.select :location, [["Outcall", "outcall"],["Office", "office"]] %>
+	
+	<%= a.label :status %>
+	<%= a.select :status, [["Requested", "requested"],["Confirmed", "confirmed"],["Cancelled", "cancelled"],["Completed", "completed"],["Paid","paid"]] %>
+	
+	<h3>Services</h3>
+	<%= edit_appointment_services(@user, @appointment) %>
+  <%=a.submit%>
+<% end %>

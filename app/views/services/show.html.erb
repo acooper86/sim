@@ -1,19 +1,17 @@
-<div>
-	<% if @post.ptype == 'image' %>
-		<%= image_tag @post.image_url %>
-	<% elsif @post.ptype == 'link'%>
-		<%= link_to @post.link_text, @post.href %>
-	<% elsif @post.ptype == 'block_quote' %>
-		<blockquote><%= @post.block_quote %><br/><span class="q_author"><%= @post.q_author%></span></blockquote>
-	<% elsif @post.ptype == 'video' %>
-		<%= @post.video.html_safe %>
-	<% elsif @post.ptype == 'normal'%>
-		<h2>Title:<%= @post.title %></td>
+<section id="service">
+  <h1><%= @service.name %></h1>
+  <p><%= @service.description %></p>
+  <% unless @service.main %>
+    <p>Addon available for 
+      <% if @service.prerequisites%>
+		<% @service.prerequisites.each do |pre| %>
+		  <%= pre.name + " " unless pre.name.blank? %>
+		<% end %>
 	<% end %>
-	<h3>Content:</h3>
-	<p><%= @post.content %></p>
-	<p>Tags:<%= tag_list @post %></p>
-	<p>Category:<%= @post.category.first.name %></p>
-	<%= link_to 'edit', edit_user_blogs_post_path(@user,@post)%>
-	<%= button_to 'delete', user_blogs_post_path(@user,@post), :method => :delete%>
-</div>
+  <% end %>
+  
+  <p>Available time/cost</p>
+  <% @service.available.each do |key,value|%>
+	<p><%= available_duration(key) + " for " + value + " dollars." %></p>
+  <% end %>
+</section>

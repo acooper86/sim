@@ -11,7 +11,32 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120731155222) do
+ActiveRecord::Schema.define(:version => 20120803192654) do
+
+  create_table "appointment_services", :force => true do |t|
+    t.integer  "appointment_id"
+    t.integer  "service_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "appointment_services", ["appointment_id"], :name => "index_appointment_services_on_appointment_id"
+  add_index "appointment_services", ["service_id"], :name => "index_appointment_services_on_service_id"
+
+  create_table "appointments", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "contact_id"
+    t.datetime "start"
+    t.datetime "finish"
+    t.string   "duration"
+    t.string   "location"
+    t.string   "status"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "appointments", ["contact_id"], :name => "index_appointments_on_contact_id"
+  add_index "appointments", ["user_id"], :name => "index_appointments_on_user_id"
 
   create_table "blogs", :force => true do |t|
     t.integer  "user_id"
@@ -177,6 +202,7 @@ ActiveRecord::Schema.define(:version => 20120731155222) do
     t.string   "cancellation_policy"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
+    t.string   "timezone"
   end
 
   add_index "schedules", ["user_id"], :name => "index_schedules_on_user_id"

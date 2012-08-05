@@ -8,7 +8,8 @@ class User < ActiveRecord::Base
 	has_many :post, :through => :blog
 	
 	has_one :schedule, :dependent => :destroy
-	has_many :service, :dependent => :destroy
+	has_many :service
+	has_many :appointment
 	
 	has_many :image, :dependent => :destroy
 	has_many :contact, :dependent => :destroy

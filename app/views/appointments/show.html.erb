@@ -1,0 +1,12 @@
+<h1>Appointment for <%= @appointment.contact.first_name + " " + @appointment.contact.last_name %></h1>
+<h2>Appointment Details</h2>
+<p>Date: <%= @appointment.start.strftime("%a %b %-d, %C")%></p>
+<p>Start time: <%= @appointment.start.strftime("%l:%M %P")%></p>
+<p>End time: <%= @appointment.finish.strftime("%l:%M %P") if @appointment.finish%></p>
+<p>Duration: <%= @appointment.duration %></p>
+<p>Location: <%= @appointment.location %></p>
+<p>Status: <%= @appointment.status %></p>
+<p>Services: <%= @appointment.service %></p>
+
+<%= link_to 'edit', edit_user_appointment_path(@user,@appointment)%>
+<%= button_to 'delete', user_appointment_path(@user,@appointment), :method => :delete%>

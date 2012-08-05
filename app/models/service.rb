@@ -18,7 +18,7 @@ class Service < ActiveRecord::Base
     available_hash = {}
     
     available["time"].each do |t|
-      available_hash.merge(t => available["cost"][i])
+      available_hash.merge!(t => available["cost"][i]) unless t.blank?
       i = i + 1
     end
     

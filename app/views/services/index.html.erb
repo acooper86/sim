@@ -5,21 +5,57 @@
 <% if @services.empty?%>
 	<h2>No Services Yet To View. Add a service first. </h2>
 <% else %>
+  <h1>Main Services</h1>
+  <table>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Available time/cost</th>
+    <th>Actions</th>
 	<%@services.each do |s|%>
-		<div>
-			<h2>Name:<%= s.name %></h2>
-			<p>Description:<%= s.description %></p>
-			<p>Available times:</p>
-			<p>Prerequisites:
+	  <% if s.main %>
+  		<tr>
+ 		  <td><%= s.name %></td>
+		  <td><%= s.description %></td>
+			<td><%s.available.each do |key,value|%>
+			  <p><%= available_duration(key) + " for " + value + " dollars." %></p>
+			<% end %>
+			</td>
+
+			<td><%= link_to 'edit', edit_user_service_path(@user,s)%>
+			<%= link_to 'show', user_service_path(@user,s)%>
+			<%= button_to 'delete', user_service_path(@user,s), :method => :delete%></td>
+		</tr>
+	  <% end %>
+	<% end %>
+  </table>	
+  <h1>Add-on Services</h1>
+  <table>
+	 <th>Name</th>
+    <th>Description</th>
+    <th>Available time/cost</th>
+    <th>Available on </th>
+    <th>Actions</th>
+	<%@services.each do |s|%>
+	  <% unless s.main %>
+	    <tr>
+		  <td><%= s.name %></td>
+		  <td><%= s.description %></td>
+			<td><%s.available.each do |key,value|%>
+			  <p><%= available_duration(key) + " for " + value + " dollars." %></p>
+			<% end %>
+			</td>
+			<td>
 			<% if s.prerequisites%>
 			  <% s.prerequisites.each do |pre| %>
 			  <%= pre.name + " " unless pre.name.blank? %>
 			  <% end %>
-			<% end %></p>
+			<% end %></td>
 			
-			<%= link_to 'edit', edit_user_service_path(@user,s)%>
+			<td><%= link_to 'edit', edit_user_service_path(@user,s)%>
 			<%= link_to 'show', user_service_path(@user,s)%>
-			<%= button_to 'delete', user_service_path(@user,s), :method => :delete%>
-		</div>
-	<% end %>	
+			<%= button_to 'delete', user_service_path(@user,s), :method => :delete%></td>
+		</tr>
+	  <% end %>
+ 	<% end %>
+  </table>	
 <% end %>

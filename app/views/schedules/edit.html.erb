@@ -59,6 +59,9 @@
 	  <td><%= time_html('sunday', true, 'end')%></td>
 	</tr>
   </table>
+
+  <%=s.label :timezone, "Local Timezone."%>
+  <%=s.time_zone_select :timezone,  ActiveSupport::TimeZone.us_zones  %>
 	
   <%=s.label :padding, "Padding time automatically added between services."%>
   <%=s.select :padding, [['None', 0],['5 Min.', 5],['10 Min.', 10], ['15 Min.', 15],['20 Min.', 20],['30 Min.', 30],['1 Hr.', 60],['2 HR.', 120]]  %>

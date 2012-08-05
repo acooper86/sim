@@ -8,6 +8,7 @@ Sim::Application.routes.draw do
   		match '/activate', :to => "users#activate"
   	    match '/mail', :to => "users#mail"
   	    match '/support', :to => "users#support"
+  	    match '/message', :to => "users#message", :via => :post
   	end
   	
   	resources :direct_mail
@@ -32,6 +33,8 @@ Sim::Application.routes.draw do
   	resource :schedules
   	
   	resources :services
+  	
+  	resources :appointments
   end
   
   resources :password_resets

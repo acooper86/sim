@@ -3,6 +3,8 @@ class UsersController < ApplicationController
   before_filter :correct_user, :only => [:edit,:update]
   before_filter :admin_user, :only => :destroy
   
+  protect_from_forgery :except => :message
+  
   layout "logged", :except => [:new,:create]
   
   def new
@@ -81,6 +83,11 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @dm = @user.contact_message.paginate(:page=>params[:page], :per_page => 15).order('created_at DESC')
     @nm = @user.news_message.paginate(:page=>params[:page], :per_page => 15).order('created_at DESC')
+  end
+  
+  def message
+    @user = User.find(params[:id])
+    @message = UserMessage.new(params[:message]).save
   end
   
   private

@@ -1,4 +1,111 @@
+<% stylesheet "schedule"%>
+
 <h1>Your Schedule</h1>
 
 <%= link_to "Schedule Settings", edit_user_schedules_path if @schedule %> 
 <%= link_to "Set Up Your Schedule", new_user_schedules_path unless @schedule %>
+
+<%= link_to "Add Appointment", new_user_appointment_path if @schedule %>
+
+<%= link_to "Month", user_schedules_path(@user, :time => @time, :view => "month") %>
+<%= link_to "Week", user_schedules_path(@user, :time => @time, :view => "week") %>
+<%= link_to "Day", user_schedules_path(@user, :time => @time, :view => "day") %>
+
+<section id="calendar">
+  <% if @view == "month" %>
+    <%= link_to "Previous Month", user_schedules_path(@user, :time => previous_month(@time), :view => @view) %>
+    <%= link_to "Next Month", user_schedules_path(@user, :time => next_month(@time), :view => @view) %>
+    <table class="month calendar">
+      <th>Sunday</th>
+  	  <th>Monday</th>
+	  <th>Tuesday</th>
+	  <th>Wednesday</th>
+	  <th>Thursday</th>
+	  <th>Friday</th>
+	  <th>Saturday</th>
+	  <%= create_month_rows(@time, @user) %>
+    </table>
+  <% elsif @view == "week" %>
+    <%= link_to "Previous Week", user_schedules_path(@user, :time => previous_week(@time), :view => @view) %>
+    <%= link_to "Next Week", user_schedules_path(@user, :time => next_week(@time), :view => @view) %>
+    <table class="week calendar">
+  	  <th>Time</th>
+  	  <th>Monday</th>
+	  <th>Tuesday</th>
+	  <th>Wednesday</th>
+	  <th>Thursday</th>
+	  <th>Friday</th>
+	  <th>Saturday</th>
+	  <th>Sunday</th>
+	  <tr>
+	    <td class="times">
+	      <ul>
+	      <li>12:00am</li>
+          <li> 1:00am</li>
+          <li> 2:00am</li>
+          <li> 3:00am</li>
+          <li> 4:00am</li>
+          <li> 5:00am</li>
+          <li> 6:00am</li>
+          <li> 7:00am</li>
+          <li> 8:00am</li>
+          <li> 9:00am</li>
+          <li>10:00am</li>
+          <li>11:00am</li>
+          <li>12:00pm</li>
+          <li> 1:00pm</li>
+          <li> 2:00pm</li>
+          <li> 3:00pm</li>
+          <li> 4:00pm</li>
+          <li> 5:00pm</li>
+          <li> 6:00pm</li>
+          <li> 7:00pm</li>
+          <li> 8:00pm</li>
+          <li> 9:00pm</li>
+          <li>10:00pm</li> 
+          <li>11:00pm</li>
+          </ul>
+        </td>
+	    <%= create_week_rows(@time, @user) %>
+	  </tr>
+    </table>
+  <% elsif @view == "day" %>
+    <%= link_to "Previous Day", user_schedules_path(@user, :time => previous_day(@time), :view => @view) %>
+    <%= link_to "Next Day", user_schedules_path(@user, :time => next_day(@time), :view => @view) %>
+    <table class="day calendar">
+      <th>Time</th>
+      <th><%= @time.strftime("%a %b %-d, %C")%></th>
+	  <tr>
+	    <td class="times">
+	      <ul>
+	      <li>12:00am</li>
+          <li> 1:00am</li>
+          <li> 2:00am</li>
+          <li> 3:00am</li>
+          <li> 4:00am</li>
+          <li> 5:00am</li>
+          <li> 6:00am</li>
+          <li> 7:00am</li>
+          <li> 8:00am</li>
+          <li> 9:00am</li>
+          <li>10:00am</li>
+          <li>11:00am</li>
+          <li>12:00pm</li>
+          <li> 1:00pm</li>
+          <li> 2:00pm</li>
+          <li> 3:00pm</li>
+          <li> 4:00pm</li>
+          <li> 5:00pm</li>
+          <li> 6:00pm</li>
+          <li> 7:00pm</li>
+          <li> 8:00pm</li>
+          <li> 9:00pm</li>
+          <li>10:00pm</li> 
+          <li>11:00pm</li>
+          </ul>
+        </td>
+	    <%= create_day_rows(@time, @user).html_safe %>
+	  </tr>
+    </table>
+  <% end %>
+</section

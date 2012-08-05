@@ -1,5 +1,114 @@
 module ScheduleHelper
-
+  ##############Schedule calendar methods
+   def create_month_rows(time, user)
+    html = ""
+    day = time.beginning_of_month
+    
+    html << create_padding_days(day) unless day.wday == 0
+    
+    month_appointments = month_appointments_query(user, day)
+    
+    while day < time.end_of_month 
+      html << "<tr>" if day.wday == 0
+      
+      html << "<td>" + day.day.to_s + day_appointments(day, month_appointments) + "</td>"
+      
+      html << "</tr>" if day.wday == 6 
+      
+      day = day + 1.days
+    end
+    
+    return html.html_safe
+    
+  end
+  
+  def create_padding_days(time)
+    html ="<tr>"
+    days_before = time.wday.to_i
+    
+    time.wday.times do |i|
+      days = days_before - i
+      prev_day = time - days.days
+      html << "<td>" + prev_day.day.to_s + "</td>"
+    end
+    
+    return html
+  end
+  
+  def month_appointments_query(user, day)
+    return user.appointment.where(["start >= ? AND start <= ?", day, day.end_of_month]).order("start asc")
+  end
+  
+  def day_appointments(day, apps)
+    html = "<ul>"
+    apps.each do |app|
+      html << '<li><a href="' << user_appointment_path(app.user_id, app.id) << '">' << app.start.strftime("%l:%M%P") << " " << app.contact.first_name << " " << app.contact.last_name << "</a></li>" if day.mday == app.start.mday
+    end
+    html << "</ul>"
+    
+    return html
+  end
+  
+  def create_week_rows(time, user)
+    html = ""
+    day = time.beginning_of_week
+    
+    while day < time.end_of_week
+      html << create_day_rows(day, user)
+      
+      day = day + 1.days
+    end
+    
+    return html.html_safe 
+  end
+  
+  def create_day_rows(day, user)
+    html = "<td><ul>"
+    appointments = user.appointment.where(["start >= ? AND start <= ?", day, day.end_of_day]).order("start asc")
+    time = day.beginning_of_day 
+    
+    while time < day.end_of_day
+      html << "<li>" 
+      appointments.each do |app|
+        if app.start >= time && app.start < time + 1.hours
+          html << '<a href="' << user_appointment_path(app.user_id, app.id) << '">' << app.start.strftime("%l:%M%P") << " " << app.contact.first_name << " " << app.contact.last_name << "</a>"
+        end
+      end
+      html << "</li>"
+      
+      time = time + 1.hours
+    end
+    
+    html << "</ul></td>"
+    
+    return html
+  end
+  
+  def previous_month(time)
+    return time - 1.months
+  end
+  
+  def next_month(time)
+    return time + 1.months
+  end
+  
+  def previous_week(time)
+    return time - 1.weeks
+  end
+  
+  def next_week(time)
+    return time + 1.weeks
+  end
+  
+  def previous_day(time)
+    return time - 1.days
+  end
+  
+  def next_day(time)
+    return time + 1.days
+  end
+  ##############create and edit schedule methods
+  
   def time_html( day, second, time_start_stop)
     time_html = ""
   
