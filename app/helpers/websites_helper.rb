@@ -91,18 +91,7 @@ module WebsitesHelper
 		
 		return content
 	end
-	
-  def write_page_stub_content(page)
-    if page.content
-      if page.ptype == "normal"
-	    content = page.content.html_safe
-	  elsif page.ptype == "contact"
-	    content = page.content
-	  end
-    else
-	  content = "<h1>This page is under construction!<h1><p>Please excuse the mess. This page will be live soon!</p>"
-	end
-  end
+
 end
 
 

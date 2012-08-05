@@ -31,9 +31,9 @@ class Page < ActiveRecord::Base
 	end
 	  
 	def contact_form_for(user)
-      html = '<form method="post" id="new_message" class="new_message" action="http://simplissage.com/users/'user.id'/message" accept-charset="UTF-8">
+      html = '<form method="post" id="new_message" class="new_message" action="http://simplissage.com/users/' + user.id + '/message" accept-charset="UTF-8">
         <div style="margin:0;padding:0;display:inline">
-          <input type="hidden" value="✓" name="utf8">
+          <input type="hidden" value="&#x2713;" name="utf8">
         </div>
   
           <fieldset class="fields">
