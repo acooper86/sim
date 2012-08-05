@@ -8,16 +8,16 @@
   	successful.
   </p>
 
-  <section id="signup" class="round">
+  <section id="home_top" class="round">
     <section id="signup_text"
       <div>
         <h1>Massage Website Guru is your One-Stop, Go-To destination for all your online massage marketing needs.</h1>
        <p>Our feature list includes:
         <ul>
           <li>Full, Costomizable, Easily Editable Website</li>
-          <li>Full service HTML newsletter<li>
+          <li>Full service HTML newsletter</li>
           <li>Integrated Blog Software</li>
-          <li>Contact Management and easy Direct Email to multiple contacts</li>
+          <li>Contact Management and easy Direct Email</li>
           <li>Costomizable Online Scheduler</li>
         </ul>
       </div>
@@ -26,41 +26,58 @@
         <p>You choose to style, and content or your website! Create as many pages as you want, adjust the menu, add images, maps, and any code you want with absolutely no page limits.
            Your website will have its own address, and include no advertising for other services! Beautiful, full Web 2.0 themes are added monthly, so it is easy to keep the look of your
            online presence fresh, professional, and daynamic!</p>
-        
+        <%= image_tag "website_screen.png" %>
+      </div>
+       <div>
+        <h1>Full Service Html Newsletter</h1>
+        <p>Your monthly newsletter has never been easier, or more effective! Your newsletter design is the same as your website, promoting good branding and visual recognition.
+           No longer do you need to manually manage your list! New clients and contacts are automatically added when they register for your site, to schedule an appointment or comment
+           on a blog post. Choose from different smart-type lists to customize your newsletter for different audiences.</p>
+      </div>
+       <div>
+        <h1>Integrated Blog Software</h1>
+        <p>Our proprietary, custom built blogging software seemlessly integrates your blog with your website. This dramatically increases conversion from blog reader to client! 
+           It is also the only effective way to use a blog for Search Engine Optimization. Don't be fool by other integration strategies!</p>
+      </div>
+      <div>
+        <h1>Contact Management and easy Direct Email!</h1>
+        <p>Send personalized email to dozens of clients without typing a single email address, no copy/pasting, or sending carbon-copies. Our Contact Management and Direct Email system keeps
+           all your contacts at your fingertips!</p>
+      </div>
+       <div>
+        <h1>Costomizable Online Scheduler</h1>
+        <p>Finally an online scheduler built for massage therapists by massage therapists! You control your schedule, not the other way around. Set all the rules and let it work for you! Your online schedule will 
+           dramatically increase new appointment schedules, not need to chase after the phone or play telephone tag!</p>
       </div>
     </section>
+    <section id="signup" class="round">
     <h1>Sign up for Simplissage!</h1>
-    <%= form_for(@user) do |f| %>
-    <%= render 'shared/error_messages', :object => f.object %>
-
-	<div class="field">
-		<%= f.label :first_name %><br />
-		<%= f.text_field :first_name %>
-	</div>
-	
-	<div class="field">
-		<%= f.label :last_name %><br />
-		<%= f.text_field :last_name %>
-	</div>
-	
-	<div class="field">
-		<%= f.label :email %><br />
-		<%= f.text_field :email %>
-	</div>
-	
-	<div class="field">
-		<%= f.label :password %><br />
-		<%= f.password_field :password %>
-	</div>
-	
-	<div class="field">
-		<%= f.label :password_confirmation, "Confirmation" %><br />
-		<%= f.password_field :password_confirmation %>
-	</div>
-	
-	<div class="actions">
-		<%= f.submit "Sign up" %>
-	</div>
-    <% end %>
+      <%= form_for(@user) do |f| %>
+      <%= render 'shared/error_messages', :object => f.object %>
+        <div class="field">
+		  <%= f.label :first_name %><br />
+		  <%= f.text_field :first_name %>
+		</div>
+	    <div class="field">
+		  <%= f.label :last_name %><br />
+		  <%= f.text_field :last_name %>
+		</div>
+  	    <div class="field">
+		  <%= f.label :email %><br />
+		  <%= f.text_field :email %>
+		</div>
+	    <div class="field">
+		  <%= f.label :password %><br />
+		  <%= f.password_field :password %>
+	    </div>
+	    <div class="field">
+		  <%= f.label :password_confirmation, "Confirmation" %><br />
+	  	  <%= f.password_field :password_confirmation %>
+	    </div>
+	    <div class="actions">
+		  <%= f.submit "Sign up" %>
+	    </div>
+      <% end %>
+    </section>
   </section>
-</article
+</article>
