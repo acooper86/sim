@@ -16,7 +16,7 @@ module WebsitesHelper
 		@page_list.each do |p|
 			if (p.indexed == true)
 				if (p.child == false)
-					@li = "<li><a href=\"/"<< p.ptitle.gsub(/\s+/, "") << ".html\">"
+					@li = "<li><a href=\"/view/"<< p.ptitle.gsub(/\s+/, "") << ".html\">"
 					@li << p.ptitle
 					@li << "</a></li>"
 					@li_list<<@li

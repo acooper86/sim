@@ -39,7 +39,10 @@ Sim::Application.routes.draw do
   
   resources :password_resets
   
-  
+  namespace :view, :controller => :viewport do
+    root  :to => :home
+    match '/:page_name', :to => :show
+  end
 
   root :to => "statics#home"
   
