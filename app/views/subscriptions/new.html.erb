@@ -1,0 +1,24 @@
+<h1>Ready to sign-up? Great! Fill out the form bellow and your done.</h1>
+<p>Security Notice: Massage Website Guru does not maintain or store any sensitive data. All data is stored by Paypal.
+   No agent of Massage Website Guru or Massage Solutions will ever ask for this information
+   in the future in email, support tickets, forums, or on the phone. Further, we will never ask for your password to another site,
+   your social security number (whole or part), or for your credit card information except on this page.</p>
+
+<%= form_for([@user, @subscription]) do |s| %>
+	<%= render 'shared/error_messages', :object => s.object %>
+	<%= s.label :level, "Membership Level"%>
+	<%= s.radio_button :level, "normal", :checked => true %><%= s.label :level, "Normal"%>
+	<%= label_tag "First Name" %>
+	<%= text_field_tag '[credit_card][first_name]', nil, :placeholder => 'First Name...'%>
+	<%= label_tag "Last Name" %>
+	<%= text_field_tag '[credit_card][last_name]', nil, :placeholder => 'Last Name...'%>
+	<%= label_tag "Card Number" %>
+	<%= text_field_tag '[credit_card][number]', nil, :placeholder => 'CC Number...'%>
+	<%= label_tag "Expiration Date" %>
+	<%= select_tag '[credit_card][month]', options_for_select([['January', 1],['Febuary', 2],['March', 3],['April', 4], ['May', 5], ['June', 6],['July', 7], ['August', 8], ['September', 9], ['November', 10], ['December', 12]]) %>
+	<%= select_tag '[credit_card][year]', options_for_select([['2012', 12],['2013', 13],['2014', 14],['2015', 4], ['2016', 16], ['2017', 17],['2018', 18], ['2019', 19], ['2020', 20]]) %>
+	<%= label_tag "Security Verification Number" %>
+	<%= text_field_tag '[credit_card][verification_value]', nil, :placeholder => 'CCV Number'%>
+	<%= s.submit %>
+	
+<% end %>

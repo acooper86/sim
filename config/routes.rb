@@ -11,6 +11,8 @@ Sim::Application.routes.draw do
   	    match '/message', :to => "users#message", :via => :post
   	end
   	
+  	resources :subscriptions
+  	
   	resources :direct_mail
   	
   	resources :news_mail

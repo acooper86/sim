@@ -1,6 +1,8 @@
 require 'digest'
 
 class User < ActiveRecord::Base
+	has_many :subscription, :dependent => :destroy
+	
 	has_one :website, :dependent => :destroy
 	has_many :page, :through => :website
 	

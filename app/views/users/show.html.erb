@@ -39,3 +39,41 @@
 		<td><%= @user.business %></td>
 	</tr>
 </table>
+
+<h1>Account Information:</h1>
+<% if @user.subscription.empty? %>
+  <%= link_to "Create a subscription", new_user_subscription_path(@user) %>
+  <table>
+	<tr>
+		<td><h2>Member Since:</h2></td>
+		<td><%= @user.created_at %></td>
+	</tr>
+	<tr>
+		<td><h2>Trial Membership Ends:</h2></td>
+		<td><%= @user.created_at + 1.months %></td>
+	</tr>
+  </table>
+<% else %>
+    <table>
+	<tr>
+		<td><h2>Member Since:</h2></td>
+		<td><%= @user.created_at %></td>
+	</tr>
+	<tr>
+		<td><h2>Trial Membership Ends:</h2></td>
+		<td><%= @user.created_at + 1.months %></td>
+	</tr>
+	<tr>
+		<td><h2>Cost Per Month:</h2></td>
+		<td>$<%= @user.subscription.first.cost %></td>
+	</tr>
+	<tr>
+		<td><h2>Membership Level:</h2></td>
+		<td><%= @user.subscription.first.level %></td>
+	</tr>
+	<tr>
+		<td><h2>Membership Status:</h2></td>
+		<td><%= @user.subscription.first.status %></td>
+	</tr>
+  </table>
+<% end %>

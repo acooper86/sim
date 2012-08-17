@@ -16,6 +16,8 @@ gem 'carrierwave'
 
 gem 'mysql2'
 
+gem 'activemerchant', :git => 'git://github.com/vantran/active_merchant.git'
+
 group :development do
 	gem 'rspec-rails'
 	gem 'sqlite3'
