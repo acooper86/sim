@@ -5,6 +5,7 @@ class View::ViewportController < ApplicationController
     @website = Website.find_by_domain(request.host)
     @page = Page.find(@website.order.first)
     @user = User.find(@website.user_id)
+    render 'show'
   end
 
   def show

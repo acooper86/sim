@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
   		@title = "Sign in"
 	  	render 'new'
 	else
-		if user.activated == "t"
+		if user.activated
 			sign_in(user,params[:session][:permanent])
 			redirect_back_or dashboard_path
 		else

@@ -46,7 +46,7 @@
 		<ul>
 		<% @page_list.each do |p|%>
 			<li class="page_li" id = "<%= p.id %>"><%= p.ptitle %> <%= link_to "Edit", edit_user_websites_page_path(@user,p), :class => 'edit' %>
-				<%= link_to "Show", user_websites_page_path(@user,p), {:class => 'show', :target => '_blank'} %>
+				<%= link_to "Show", view_path(p.ptitle), {:class => 'show', :target => '_blank'} %>
 				<%= link_to "Delete", user_websites_page_path(@user,p), {:confirm => "Are you sure you wish to delete "<<p.ptitle, :class => 'delete', :method => :delete} %></li>
 		<% end %>
 		</ul>

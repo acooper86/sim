@@ -1,2 +1,14 @@
-<script type="text/javascript" src="/assets/jquery.min.js"></script>
-<script type="text/javascript" src="/assets/jquery_ujs.js"></script>
+<script type="text/javascript"
+  src="http://maps.googleapis.com/maps/api/js?key=AIzaSyD9zGwg6LBZqYLa1vUh9PMPTTxC0wrDMPE&sensor=false">
+</script>
+<%= javascript_include_tag 'jquery'%>
+<%= javascript_include_tag 'gmap3.min'%>
+<script type="text/javascript" src="/assets/viewport.js"></script>
+
+<script type="text/javascript">
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>

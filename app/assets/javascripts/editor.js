@@ -35,7 +35,7 @@ function bindBody(){
   	      	
    		//check to see if the click is on a text element in the edit box
 	    if(target.is("#box p,#box h1,#box h2,#box h3,#box h4,#box h5,#box h6,#box h7,#box ol, #box ul, #box li, #box span, #box sub, #box sup, .textBtn, input, .miniColors, .miniColors-trigger, .miniColors-selector,.miniColors-huePicker,.miniColors-hues,.miniColors-colorPicker-inner,.miniColors-colorPicker,#colors label, #colors, #colors input, #colors a,#fonts,#fonts select, #fonts option")){
-	       if(target.is(":not(.textBtn,.miniColors, .miniColors-trigger, .miniColors-selector,.miniColors-huePicker,.miniColors-hues,.miniColors-colorPicker-inner,.miniColors-colorPicker,#colors label, #colors, #colors input, #colors a,#fonts,#fonts select, #fonts option, #imageEdit, .imageField,#linkEdit,.linkField, .map_control, .code_block, .code_block *)")){
+	       if(target.is(":not(.textBtn,.miniColors, .miniColors-trigger, .miniColors-selector,.miniColors-huePicker,.miniColors-hues,.miniColors-colorPicker-inner,.miniColors-colorPicker,#colors label, #colors, #colors input, #colors a,#fonts,#fonts select, #fonts option, #imageEdit, .imageField,#linkEdit,.linkField, ._control, .code_block, .code_block *)")){
 	       	if (target.parent().attr('id') == "box" ) {
 	       		textClick(target,"0 -50");
 	       	} else if (target.parent().is("li,ol,ul,p,h1,h2,h3,h4,h5,h6,h7")){
@@ -249,7 +249,9 @@ function removeFormat(){
 }
    
 //EDIT IMAGE FUNCTIONS
-var image_store = ''; 
+document.execCommand("enableObjectResizing", false, false);
+var image_store = '';
+ 
 function editImage(){
 	//set the image# equal to dom index value 
     var image = this;

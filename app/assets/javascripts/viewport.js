@@ -1,2 +1,17 @@
-// Place all the behaviors and hooks related to the matching controller here.
-// All this logic will automatically be available in application.js.
+$('.map').each(function(){
+  var map = $(this);
+  var address = map.attr('data-address');
+  var zoom = parseInt(map.attr('data-zoom'));
+
+  map.gmap3(
+    {action:'clear', name:'marker'},
+	{
+	  action: 'addMarker',
+	  address: address,
+	  map:{
+	  center:true,
+	  zoom: zoom
+	  }
+	}
+  );
+});

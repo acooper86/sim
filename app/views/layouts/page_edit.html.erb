@@ -4,8 +4,24 @@
 		<title><%= title %></title>
 		<%= stylesheet_link_tag 'editor.css', :media => 'screen' %>
 		<%= stylesheet_link_tag @website.theme, :media => 'screen' %>
+       <meta property="og:title" content="Massage Website Guru" />
+       <meta property="og:type" content="website" />
+       <meta property="og:url" content="http://massage-website.com" />
+       <meta property="og:image" content="" />
+       <meta property="og:site_name" content="Massage Website Guru" />
+       <meta property="fb:admins" content="23807814" />
 	</head>
 	<body>
+		<div id="fb-root"></div>
+        <script>(function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1";
+          fjs.parentNode.insertBefore(js, fjs);
+          }(document, 'script', 'facebook-jssdk'));
+        </script>
+		
 		<section id = "controlbar">
 			<%= form_for([@user, @website, @page], :url => user_websites_page_path) do |f| %>
 				<%= render 'shared/error_messages', :object => f.object %>
@@ -22,6 +38,7 @@
 		</section>
 		<article class="user_page" id = <%= @page.id %>>
 			<%= render 'layouts/page_header' %>
+			
 			<div id="box" contenteditable = true>
 				<%= yield %>
 			</div>
@@ -31,5 +48,12 @@
       		src="http://maps.googleapis.com/maps/api/js?key=AIzaSyD9zGwg6LBZqYLa1vUh9PMPTTxC0wrDMPE&sensor=false">
     	</script>
 		<%= javascript_include_tag('editor.js') %>
+		<script type="text/javascript">
+         (function() {
+           var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+           po.src = 'https://apis.google.com/js/plusone.js';
+           var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+         })();
+        </script>
 	</body>
 </html>
